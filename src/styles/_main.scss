@@ -1,0 +1,47 @@
+$body-bg: rgb(40,40,40);
+
+@font-face {
+  font-family: 'Product Sans';
+  src: url('../../dist/fonts/ps_reg.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Product Sans';
+  src: url('../../dist/fonts/ps_bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Raleway-Regular';
+  src: url('../../dist/fonts/Raleway-Regular.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Raleway-Light';
+  src: url('../../dist/fonts/Raleway-Light.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Raleway-ExtraLight';
+  src: url('../../dist/fonts/Raleway-ExtraLight.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Raleway-Thin';
+  src: url('../../dist/fonts/Raleway-Thin.ttf');
+  font-weight: normal;
+}
+
+body {
+  font-family: 'Product Sans';
+  background-color: $body-bg;
+}
+
+#react-content, body, html {
+  width: 100%;
+  height: 100%;
+}

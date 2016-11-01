@@ -1,0 +1,69 @@
+$header-bg : rgb(55,55,55);
+
+$title-color: rgb(156,152,152);
+
+$close-btn-color: rgb(255,74,59);
+$minimize-btn-color: rgb(251,210,0);
+$maximize-btn-color: rgb(0, 231, 67);
+
+.header {
+    background-color: $header-bg;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+
+    &:hover {
+      cursor: default;
+    }
+
+    .title {
+      color: $title-color;
+      width: 100%;
+      font-size: 25px;
+      letter-spacing: 5px;
+      font-family: 'Raleway-Regular';
+      font-variant: small-caps;
+      text-align: center;
+      margin: 0px;
+
+      &:hover {
+        color: white;
+      }
+    }
+}
+
+.window-controls {
+  width: 100%;
+}
+
+.window-control-buttons {
+    list-style: none;
+    margin-top: 10px;
+    margin-left: 4px;
+    margin-bottom: 2px;
+    padding: 0px;
+    display: inline-block;
+    position: absolute;
+
+    li {
+        margin: 0px;
+        margin-left: 3px;
+        margin-right: 3px;
+        border-radius: 50%;
+        display: inline-block;
+        padding: 7px;
+    }
+
+    li:nth-child(1) {
+        background-color: $close-btn-color;
+    }
+
+    li:nth-child(2) {
+        background-color: $minimize-btn-color;
+    }
+
+    li:nth-child(3) {
+        background-color: $maximize-btn-color;
+    }
+}
