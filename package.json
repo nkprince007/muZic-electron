@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "ENV=development electron .",
-    "dev": "concurrently -k 'babel-node server.js' 'npm start'"
+    "dev": "concurrently -k 'babel-node server.js' 'npm start'",
+    "build": "webpack --config webpack.config.production.js && electron-packager . muZic --platform=darwin --arch=all --overwrite"
   },
   "babel": {
     "presets": [
@@ -30,6 +31,7 @@
     "concurrently": "^3.1.0",
     "css-loader": "^0.25.0",
     "electron": "^1.4.1",
+    "electron-packager": "^8.2.0",
     "express": "^4.14.0",
     "postcss-loader": "^1.1.0",
     "style-loader": "^0.13.1",
