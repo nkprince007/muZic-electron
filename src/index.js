@@ -8,6 +8,7 @@ import routes from './router/routes';
 window.jQuery = window.$ = require('../dist/js/jquery.min.js')
 require('../dist/js/bootstrap.min.js')
 require('../dist/css/bootstrap.min.css')
+require('../dist/js/main.js')
 
 // Stylesheets
 require('./styles/_main.scss')
