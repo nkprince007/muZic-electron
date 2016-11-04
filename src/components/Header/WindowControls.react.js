@@ -5,9 +5,9 @@ export default class WindowControls extends React.Component {
         return (
             <div className="window-controls clearfix">
                 <ul className="window-control-buttons">
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li />
+                    <li />
+                    <li />
                 </ul>
                 <p className="title">muZic</p>
             </div>
