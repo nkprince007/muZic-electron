@@ -49,37 +49,68 @@ $footer-bg : #282828;
         width: 16px;
         background: $accent-bg;
       }
-
     }
 
-    .play-control-buttons {
-      padding: 10px 0px;
-      margin: 0px;
-      text-align: center;
+    .player-content {
+      display: inline-block;
 
-      li {
-        padding: 15px;
-        margin: 0px 5px;
-        display: inline-block;
+      .song-details {
+        -webkit-user-select: none;
+        position: absolute;
+        font-family: 'Roboto-Medium';
+        color: white;
+        height: 100%;
+        padding: 20px 10px;
+        float: left;
+        display: block;
+        max-width: 25%;
 
-        &:hover {
-          transform: scale3d(1.3,1.3,1);
+        p {
+          margin: 0px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
 
-        img {
-          transform: scale3d(1.2,1.2,1);
+        .song-title {
+          font-size: 16px;
         }
 
-        &:nth-child(2) {
-          background-color: $accent-bg;
-          border-radius: 50%;
+        .artist-name {
+          font-size: 13px;
+          color: #777777;
+        }
+      }
+
+      .play-control-buttons {
+        padding: 10px 0px;
+        margin: 0px;
+        text-align: center;
+
+        li {
+          padding: 15px;
+          margin: 0px 5px;
+          display: inline-block;
 
           &:hover {
-            transform: scale3d(1.1,1.1,1);
+            transform: scale3d(1.3,1.3,1);
           }
 
           img {
-            transform: scale3d(1.6,1.6,1);
+            transform: scale3d(1.2,1.2,1);
+          }
+
+          &:nth-child(2) {
+            background-color: $accent-bg;
+            border-radius: 50%;
+
+            &:hover {
+              transform: scale3d(1.1,1.1,1);
+            }
+
+            img {
+              transform: scale3d(1.6,1.6,1);
+            }
           }
         }
       }

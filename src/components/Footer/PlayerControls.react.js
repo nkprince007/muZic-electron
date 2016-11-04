@@ -10,11 +10,17 @@ export default class PlayerControls extends React.Component {
                         <div className="progress-fill"></div>
                         <input className="player-progress-bar" type="range" min="0" max="100"/>
                     </div>
-                    <ul className="play-control-buttons">
-                        <li><img src="dist/img/prev.svg" /></li>
-                        <li><img src="dist/img/play_arrow_white_24px.svg" /></li>
-                        <li><img src="dist/img/next.svg" /></li>
-                    </ul>
+                    <div className="player-content">
+                        <div className="song-details">
+                            <p className="song-title">Shut Up and Dance</p>
+                            <p className="artist-name">WALK THE MOON - Talking is Hard</p>
+                        </div>
+                        <ul className="play-control-buttons">
+                            <li><img src="dist/img/prev.svg" /></li>
+                            <li><img src="dist/img/play_arrow_white_24px.svg" /></li>
+                            <li><img src="dist/img/next.svg" /></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         );

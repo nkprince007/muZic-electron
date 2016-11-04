@@ -36,8 +36,39 @@ $body-bg: #1A1A1A;
   font-weight: normal;
 }
 
+@font-face {
+  font-family: 'Roboto-Thin';
+  src: url('../../dist/fonts/Roboto-Thin.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('../../dist/fonts/Roboto-Regular.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url('../../dist/fonts/Roboto-Light.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: url('../../dist/fonts/Roboto-Medium.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../../dist/fonts/Roboto-Bold.ttf');
+  font-weight: normal;
+}
+
 body {
   font-family: 'Product Sans';
+  -webkit-font-smoothing: antialiased;
   background-color: $body-bg;
 }
 
