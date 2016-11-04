@@ -1,16 +1,30 @@
 import React from 'react';
 
+import AppActions from '../../actions/AppActions';
+
 export default class WindowControls extends React.Component {
     render() {
         return (
             <div className="window-controls clearfix">
                 <ul className="window-control-buttons">
-                    <li />
-                    <li />
-                    <li />
+                    <li onClick={this.winClose} />
+                    <li onClick={this.winMinimize} />
+                    <li onClick={this.winMaximize} />
                 </ul>
                 <p className="title">muZic</p>
             </div>
         );
+    }
+
+    winClose() {
+        AppActions.close();
+    }
+
+    winMinimize() {
+        AppActions.minimize();
+    }
+
+    winMaximize() {
+        AppActions.fullScreen();
     }
 }

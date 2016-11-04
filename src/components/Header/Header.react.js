@@ -7,7 +7,7 @@ export default class App extends React.Component {
     render() {
         return (
             <header className='row header'>
-                <WindowControls />
+                <WindowControls active={this.props.windowControls} />
             </header>
         );
     }
