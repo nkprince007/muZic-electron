@@ -39,7 +39,8 @@ const supportedExtensions = [
     '.m4a',
     '.3gp',
     '.wav',
-    '.ogg'
+    '.ogg',
+    '.flac'
 ];
 
 /*

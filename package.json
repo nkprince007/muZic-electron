@@ -50,6 +50,7 @@
   "dependencies": {
     "electron": "^1.4.5",
     "keymirror": "^0.1.1",
+    "musicmetadata": "^2.0.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-router": "^3.0.0",
