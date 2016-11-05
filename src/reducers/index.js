@@ -6,9 +6,9 @@ const reducers = [
     library
 ];
 
-export default (state, action) => {
-    return reducers.reduce((currentState, reducer) => {
-        return reducer(currentState, action);
-    });
-};
+export default (state, action) => 
+     reducers.reduce((currentState, reducer) => 
+         reducer(currentState, action)
+    )
+;
 
