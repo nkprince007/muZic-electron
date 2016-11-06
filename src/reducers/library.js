@@ -1,5 +1,6 @@
 import app from '../lib/app';
 import keys from '../keys/keyfile';
+import utils from '../utilities/utils';
 
 export default (state = {}, payload) => {
     switch (payload.type) {
@@ -10,6 +11,8 @@ export default (state = {}, payload) => {
             if (folders !== undefined) {
                 musicFolders = musicFolders.concat(folders);
 
+                musicFolders = utils.removeUselessFolders(musicFolders);
+
                 musicFolders.sort();
 
                 app.config.set('musicFolders', musicFolders);
@@ -19,7 +22,7 @@ export default (state = {}, payload) => {
             return { ...state };
         }
         case (keys.LIBRARY_REMOVE_FOLDER): {
-            if(!state.refreshingLibrary) {
+            if (!state.refreshingLibrary) {
                 const musicFolders = app.config.get('musicFolders');
 
                 musicFolders.splice(payload.index, 1);

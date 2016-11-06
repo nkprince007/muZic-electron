@@ -2,6 +2,8 @@ import electron from 'electron';
 
 import app from '../lib/app';
 
+import LibraryActions from './LibraryActions';
+
 const ipcRenderer = electron.ipcRenderer;
 
 const start = () => {
@@ -42,6 +44,7 @@ const fullScreen = () => {
 };
 
 export default {
+    library: LibraryActions,
     close,
     restart,
     start,
