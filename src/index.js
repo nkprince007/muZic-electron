@@ -14,6 +14,7 @@ require('../dist/js/main');
 require('./styles/_main.scss');
 require('./styles/_header.scss');
 require('./styles/_footer.scss');
+require('./styles/_library.scss');
 
 renderReact(
     <Router history={hashHistory} routes={routes} />,

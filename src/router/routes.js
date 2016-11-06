@@ -1,11 +1,13 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRedirect } from 'react-router';
 
 //Actions
 // import AppActions from '../actions/AppActions';
 
 //Components
 import App from '../components/App.react';
+import Library from '../components/Library/Library.react';
+import Songs from '../components/Library/Songs.react';
 
 //Initializer
 const init = {
@@ -13,13 +15,23 @@ const init = {
     app: () => {
         console.log('App Initialized');
         // AppActions.init();
+    },
+
+    library: () => {
+        console.log('Library Opened');
     }
 
 };
 
 // Router
 const routes = (
-    <Route component={ App } path='/' onEnter={ init.app }></Route>
+    <Route component={App} path='/' onEnter={init.app}>
+        <IndexRedirect to="library" />
+        <Route component={Library} path="library" onEnter={init.library}>
+            <IndexRedirect to="songs" />
+            <Route component={Songs} path="songs" />
+        </Route>
+    </Route>
 );
 
 

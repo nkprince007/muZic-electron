@@ -1,5 +1,4 @@
 const teeny = require('teeny-conf');
-const electron = require('electron');
 const path = require('path');
 
 class ConfigManager {
@@ -11,7 +10,7 @@ class ConfigManager {
         this.conf.loadOrCreateSync(defaultConfig);
 
         let configChanged = false;
-        
+
         for (const key in defaultConfig) {
             if (this.conf.get(key) === undefined) {
                 this.conf.set(key, defaultConfig[key]);
@@ -19,8 +18,9 @@ class ConfigManager {
             }
         }
 
-        if(configChanged) 
+        if (configChanged) {
             this.conf.saveSync();
+        }
     }
 
     getDefaultConfig() {

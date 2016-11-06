@@ -8,10 +8,12 @@ $maximize-btn-color: rgb(0, 231, 67);
 
 .header {
     background-color: $header-bg;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 0px;
     -webkit-app-region: drag;
     -webkit-user-select: none;
+    top: 0px;
+    position: fixed;
+    width: 100%;
 
     &:hover {
       cursor: default;

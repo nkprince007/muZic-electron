@@ -1,0 +1,59 @@
+$header-bg : #282828;
+$accent-bg: #689F38;
+
+.library {
+    width: 100%;
+
+    * {
+        transition: 0.2s ease-in-out;
+    }
+
+    .nav {
+        position: fixed;
+        width: 100%;
+        top: 55px;
+        background-color: $header-bg;
+    }
+
+    .nav-item {
+        a {
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            text-transform: uppercase;
+            border-radius: 0px;
+            transition: 0s;
+        }
+        a:hover {
+            background: $header-bg;
+            border-bottom: 2px solid $accent-bg;
+        }
+        a.active {
+            color: $accent-bg;
+            border-bottom: 2px solid $accent-bg;
+        }
+    }
+
+    .library-content {
+
+        .songs-view {
+            color: teal;
+            margin: auto;
+            margin-top: 120px;
+            width: 92%;
+
+            thead {
+                top: 110px;
+                border-bottom: 0.5px;
+                font-size: 16px;
+                text-transform: uppercase;
+            }
+
+            tbody {
+                font-size: 18px;
+                color: white;
+            }
+        }
+    }
+
+}

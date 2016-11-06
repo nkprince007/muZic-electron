@@ -22,7 +22,7 @@ export default {
     playerStatus: 'stop', // Player status
     cover: null,  // Current trackplaying cover
     notifications: [],    // The array of notifications
-    refreshingLibrary: false, // If the app is currently refreshing the app
+    refreshingLibrary: false, // If the app is currently refreshing the tracks
     repeat: false, // the current repeat state (one, all, false)
     shuffle: false, // If shuffle mode is enabled
     refreshProgress: 0,     // Progress of the refreshing library

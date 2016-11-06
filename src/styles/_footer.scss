@@ -5,7 +5,7 @@ $footer-bg : #282828;
   background-color: $footer-bg;
   bottom: 0px;
   width: 100%;
-  position: absolute;
+  position: fixed;
   ul {
     list-style: none;
   }
@@ -28,6 +28,10 @@ $footer-bg : #282828;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    .progress-player {
+      width: 100%;
+    }
 
     .player-progress-bar {
       top: 0px;

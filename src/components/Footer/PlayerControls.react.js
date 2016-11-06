@@ -6,8 +6,8 @@ export default class PlayerControls extends React.Component {
             <div className="footer-base">
                 <img className="album-img" src="dist/img/album.svg" />
                 <div className="footer-controls">
-                    <div className="progress">
-                        <div className="progress-fill"></div>
+                    <div className="progress-player">
+                        <div className="progress-fill" />
                         <input className="player-progress-bar" type="range" min="0" max="100"/>
                     </div>
                     <div className="player-content">
