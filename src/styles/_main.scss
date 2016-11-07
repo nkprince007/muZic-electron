@@ -82,6 +82,13 @@ body {
   }
 }
 
+.main-content {
+  position: absolute;
+  top: 55px;
+  bottom: 84px;
+  width: 100%;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
