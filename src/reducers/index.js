@@ -7,8 +7,6 @@ const reducers = [
 ];
 
 export default (state, action) => 
-     reducers.reduce((currentState, reducer) => 
-         reducer(currentState, action)
-    )
-;
+    reducers.reduce((currentState, reducer) => 
+        reducer(currentState, action), state);
 

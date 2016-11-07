@@ -15,6 +15,7 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({ 
+    title: 'muZic',
     width: 1280, 
     height: 720, 
     minWidth: 1280, 

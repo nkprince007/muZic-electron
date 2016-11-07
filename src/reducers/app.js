@@ -1,15 +1,14 @@
 import keys from '../keys/keyfile';
 
 export default (state = {}, payload) => {
-    switch (payload) {
-
+    switch (payload.type) {
         case (keys.REFRESH_LIBRARY): {
             return {
                 ...state,
                 tracks: {
                     library: {
-                        all: [...payload.tracks],
-                        sub: [...payload.tracks],
+                        all: [...payload.songs],
+                        sub: [...payload.songs],
                     },
                     playlist: {
                         all: [],

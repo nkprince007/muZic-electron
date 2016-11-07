@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRedirect } from 'react-router';
 
 //Actions
-// import AppActions from '../actions/AppActions';
+import AppActions from '../actions/AppActions';
 
 //Components
 import App from '../components/App.react';
@@ -14,7 +14,7 @@ const init = {
 
     app: () => {
         console.log('App Initialized');
-        // AppActions.init();
+        AppActions.init();
     },
 
     library: () => {

@@ -1,4 +1,4 @@
-$body-bg: #1A1A1A;
+$body-bg: rgb(24,24,24);
 
 @font-face {
   font-family: 'Product Sans';
@@ -76,6 +76,10 @@ body {
   margin: 0px;
   width: 100%;
   height: 100%;
+  * {
+    -webkit-user-select: none;
+    cursor: default;
+  }
 }
 
 ::-webkit-scrollbar {

@@ -1,8 +1,12 @@
 import 'babel-polyfill';
 import React from 'react';
-import { render as renderReact } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Router, hashHistory } from 'react-router';
+
+import { Provider } from 'react-redux';
+
 import routes from './router/routes';
+import store from './store';
 
 // Bootstrap and jQuery
 window.jQuery = window.$ = require('../dist/js/jquery.min');
@@ -16,7 +20,9 @@ require('./styles/_header.scss');
 require('./styles/_footer.scss');
 require('./styles/_library.scss');
 
-renderReact(
-    <Router history={hashHistory} routes={routes} />,
+ReactDOM.render(
+    <Provider store={store}>
+        <Router history={hashHistory} routes={routes} />
+    </Provider>,
     document.getElementById('react-content')
 );

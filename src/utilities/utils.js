@@ -35,7 +35,9 @@ const utils = {
                 album: utils.isNullOrEmpty(data.album) ? 
                     'Unknown' : data.album,
                 albumartist: utils.isNullOrEmpty(data.albumartist) ? 
-                    ['Unknown artist'] : data.albumartist,
+                    ['Unknown Artist'] : data.albumartist,
+                artist: utils.isNullOrEmpty(data.artist) ? 
+                    ['Unknown Artist'] : data.artist,
                 title: utils.isNullOrEmpty(data.title) ? 
                     path.parse(track).base : data.title,
                 year: data.year,
@@ -74,6 +76,22 @@ const utils = {
         }));
 
         return filteredFolders.filter(elem => !foldersToBeRemoved.includes(elem));
+    },
+    getFormatted(type, data) {
+        switch (type) {
+            case ('SONG_COUNT') : {
+                return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            }
+            case ('TOTAL_DURATION') : {
+                const time = parseInt(data, 10);
+                const hours = parseInt(time / 3600, 10);
+                const minutes = parseInt((time % 3600) / 60, 10);
+                return hours.toString().concat('hr '.concat(minutes.toString()).concat('min'));
+            }
+            default: {
+                return data;
+            }
+        }
     }
 };
 

@@ -6,6 +6,10 @@ import LibraryActions from './LibraryActions';
 
 const ipcRenderer = electron.ipcRenderer;
 
+const init = () => {
+    LibraryActions.load();
+};
+
 const start = () => {
     ipcRenderer.send('appReady');
 };
@@ -44,6 +48,7 @@ const fullScreen = () => {
 };
 
 export default {
+    init,
     library: LibraryActions,
     close,
     restart,

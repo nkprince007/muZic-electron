@@ -1,5 +1,5 @@
 $header-bg : #282828;
-$accent-bg: #689F38;
+$accent-bg: rgb(29,184,83);
 
 .library {
     width: 100%;
@@ -35,23 +35,106 @@ $accent-bg: #689F38;
     }
 
     .library-content {
+        width: 92%;
+        margin:auto;
+
+        .library-empty {
+            padding-top: 120px;
+        }
+
+        .songs-viewbox {
+            margin:auto;
+            margin-top: 120px;
+            
+            h1, p {
+                color: white;
+            }
+        }
 
         .songs-view {
             color: teal;
             margin: auto;
-            margin-top: 120px;
             width: 92%;
+
+            * {
+                transition: 0s;
+                border-color: #414141;
+            }
 
             thead {
                 top: 110px;
                 border-bottom: 0.5px;
-                font-size: 16px;
+                font-size: 13px;
                 text-transform: uppercase;
+
+                th {
+                    font-weight: lighter;
+                }
             }
 
             tbody {
-                font-size: 18px;
+                font-size: 16px;
                 color: white;
+
+                tr {
+                    border-bottom: 1px solid;
+
+                    td {
+                        padding-top: 13px;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        max-width: 200px;
+                    }
+
+                    td:nth-child(1) {
+                        width: fit-content;
+                        text-align: center;
+                        padding: 6px;
+                        img{
+                            content: url('../../dist/img/play_arrow_white_24px.svg');
+                            padding: 5px;
+                            border: 1px solid white;
+                            border-radius: 50%;
+                            visibility: hidden;
+                        }
+                    }
+
+                    &:hover td:nth-child(1) img{
+                        visibility: visible;
+                    }
+
+                }
+
+                tr.active {
+                    td {
+                        color: $accent-bg;
+                        background-color: inherit;
+                    }
+                    
+                    &:hover td:nth-child(1) {
+                        img {
+                            background-color: #212121;
+                        }
+                    }
+
+                    td:nth-child(1) {
+                        img{
+                            visibility: visible;
+                            border: 1px solid transparent;
+                            content: url('../../dist/img/volume_up_white_24px.svg');
+                        }
+                        img:hover {
+                            content: url('../../dist/img/pause_white_24px.svg');
+                            background-color: transparent;
+                            border: 1px solid white;
+                        }
+                    }
+                }
+
+                tr:hover {
+                    background-color: #414141;
+                }
             }
         }
     }

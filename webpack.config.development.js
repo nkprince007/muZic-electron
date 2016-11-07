@@ -9,8 +9,9 @@ var config = {
     ],
     module: {
         loaders: [
-            { test: /\.js?$/, loaders: ['babel-loader'], exclude: '/node_modules/' },
-            { test: /\.css|\.png|\.svg|\.eot|\.ttf|\.woff|\.woff2$/, loaders: ['file-loader'] },
+            { test: /\.json$/, loader: 'json' },
+            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+            { test: /\.css|\.png|\.svg|\.eot|\.ttf|\.woff|\.woff2$/, loader: 'file-loader' },
             { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
         ]
     },
