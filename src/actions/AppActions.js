@@ -32,9 +32,9 @@ const minimize = () => {
 };
 
 const maximize = () => {
-    if (app.browserWindows.main.isMaximized()) { 
-        app.browserWindows.main.unmaximize(); 
-    } else { 
+    if (app.browserWindows.main.isMaximized()) {
+        app.browserWindows.main.unmaximize();
+    } else {
         app.browserWindows.main.maximize();
     }
 };

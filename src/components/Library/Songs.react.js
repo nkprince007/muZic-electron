@@ -9,25 +9,25 @@ class Songs extends React.Component {
         this.getSong = this.getSong.bind(this);
     }
 
-    getHeader(props = {}) {
-       return (
+    getHeader(columns = []) {
+        const headers = [];
+        columns.forEach(col => {
+            headers.push(<th>{col}</th>);
+        });
+        return (
            <thead>
-                <tr>
-                    <th> </th>
-                    <th>Song</th>
-                    <th>Artists</th>
-                    <th>Album</th>
-                    <th>Genre</th>
-                    <th>Plays</th>
-                </tr>
+               <tr>
+                   <th>&nbsp;</th>
+                   {headers}
+               </tr>
            </thead>
-       );
+        );
     }
 
     getSong(data = {}) {
         return (
             <tr key={data.key}>
-                <td><img /></td>
+                <td><img alt='' /></td>
                 <td>{data.title}</td>
                 <td>{data.artist}</td>
                 <td>{data.album}</td>
@@ -40,7 +40,7 @@ class Songs extends React.Component {
     render() {
         const library = this.props.library;
         const rows = [];
-        var duration = 0;
+        let duration = 0;
         library.forEach(song => {
             const data = {
                 key: song.path,
@@ -53,6 +53,7 @@ class Songs extends React.Component {
             duration += song.duration;
             rows.push(this.getSong(data));
         });
+        const columns = ['Song', 'Artist', 'Album', 'Genre', 'Plays'];
         const songCount = utils.getFormatted('SONG_COUNT', rows.length);
         const totalTime = utils.getFormatted('TOTAL_DURATION', duration);
 
@@ -61,7 +62,7 @@ class Songs extends React.Component {
                 <h1>Songs</h1>
                 <p>{songCount} Songs, {totalTime}</p>
                 <table className="table table-inverse table-sm songs-view">
-                    {this.getHeader()}
+                    {this.getHeader(columns)}
                     <tbody>{rows}</tbody>
                 </table>
             </div>

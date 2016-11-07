@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 //Libraries
 import app from '../lib/app';
 
-//Store
-import store from '../store';
-
 //Components
 import Header from './Header/Header.react';
 import Footer from './Footer/Footer.react';

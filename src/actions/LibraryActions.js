@@ -16,8 +16,8 @@ const realpathAsync = Promise.promisify(fs.realpath);
 
 const load = () => {
     const querySort = {
-        'title': 1,
-        'year': 1,
+        title: 1,
+        year: 1,
         'disk.no': 1,
         'track.no': 1
     };
@@ -37,14 +37,13 @@ const addFolders = () => {
         properties: ['openDirectory', 'multiSelections']
     }, folders => {
         if (folders !== undefined) {
-            Promise.map(folders, folder => {
-                return realpathAsync(folder);
-            }).then(resolvedFolders => {
+            Promise.map(folders, folder => realpathAsync(folder))
+            .then(resolvedFolders => {
                 store.dispatch({
                     type: keys.LIBRARY_ADD_FOLDERS,
                     folders: resolvedFolders
                 });
-            }).then(()=>refresh());
+            }).then(() => refresh());
         }
     });
 };
@@ -64,46 +63,43 @@ const refresh = () => {
     const folders = app.config.get('musicFolders');
     const fsConcurrency = 32;
 
-    const getMetadataAsync = track => {
-        return new Promise(resolve => {
-            utils.getMetadata(track, resolve);
-        });
-    };
+    const getMetadataAsync = track => new Promise(
+        resolve => utils.getMetadata(track, resolve)
+    );
 
-    app.models.Song.removeAsync({}, { multi: true }).then(() => {
-        return Promise.map(folders, folder => {
+    app.models.Song.removeAsync({}, { multi: true }).then(() =>
+        Promise.map(folders,
+        folder => {
             const pattern = path.join(folder, '**/*.*');
             return globby(pattern, { nodir: true, follow: true });
-        });
-    }).then(filesArrays => {
-        return filesArrays
+        }))
+        .then(filesArrays => filesArrays
             .reduce((acc, array) => acc.concat(array), [])
             .filter(filePath => app.supportedExtensions.includes(
                     path.extname(filePath).toLowerCase())
-            );
-    }).then(supportedFiles => {
+        ))
+        .then(supportedFiles => {
         let addedFiles = 0;
         const totalFiles = supportedFiles.length;
-        return Promise.map(supportedFiles, filePath => {
-            return app.models.Song.findAsync({ path: filePath }).then(docs => {
+        return Promise.map(supportedFiles, filePath =>
+            app.models.Song.findAsync({ path: filePath }).then(docs => {
                 if (docs.length === 0) {
                     return getMetadataAsync(filePath);
                 }
                 return docs[0];
             }).then(song => app.models.Song.insert(song))
             .then(() => {
-                const percent = parseInt(addedFiles * 100 / totalFiles);
-                // console.log(percent);
+                const percent = parseInt((addedFiles * 100) / totalFiles, 10);
+                console.log(percent);
                 addedFiles++;
-            }, { concurrent: fsConcurrency });
-        }).then(() => {
+            }, { concurrent: fsConcurrency }))
+            .then(() => {
             AppActions.library.load();
             store.dispatch({
                 type: keys.LIBRARY_REFRESH_END
             });
         }).catch(err => console.warn(err));
     });
-
 };
 
 export default {

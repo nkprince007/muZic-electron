@@ -2,30 +2,30 @@ const electron = require('electron');
 const path = require('path');
 const url = require('url');
 
-const ConfigManager = require('./config');
+// const ConfigManager = require('./config');
 
 const app = electron.app;
-const nativeImage = electron.nativeImage;
+// const nativeImage = electron.nativeImage;
 const BrowserWindow = electron.BrowserWindow;
 
 const appRoot = path.resolve(__dirname);
-const srcPath = path.join(appRoot, 'src');
+// const srcPath = path.join(appRoot, 'src');
 
 let mainWindow;
 
 function createWindow() {
-  mainWindow = new BrowserWindow({ 
+  mainWindow = new BrowserWindow({
     title: 'muZic',
-    width: 1280, 
-    height: 720, 
-    minWidth: 1280, 
-    minHeight: 720, 
-    frame: false, 
-    show: false 
+    width: 1280,
+    height: 720,
+    minWidth: 1280,
+    minHeight: 720,
+    frame: false,
+    show: false
   });
 
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(appRoot, 'index.html'),
     protocol: 'file:',
     slashes: true
   }));
@@ -40,7 +40,7 @@ function createWindow() {
 }
 
 app.on('ready', () => {
-  const configManager = new ConfigManager(app);
+  // const configManager = new ConfigManager(app);
   createWindow();
 });
 
