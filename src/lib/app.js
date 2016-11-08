@@ -85,8 +85,7 @@ const Album = new linvodb('album', {
         default: null
     },
     year: String,
-    songs: [String],
-    songsSrc: [String],
+    songsList: [Document],
     tracks: Number,
     duration: Number
 });

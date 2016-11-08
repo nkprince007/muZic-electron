@@ -62,13 +62,15 @@ const refreshAlbums = () => {
         if (err) console.warn(err);
         else {
             const albums = _.groupBy(songs, 'album');
-            _.forIn(albums, (value, key) => {
+            _.forIn(albums, (songsList, key) => {
                 const album = {
                     title: key,
-                    cover: _.union(value.map((song) => song.cover)),
-                    artists: _.union(_.flatten(value.map((song) => song.albumartist))),
-                    songs: value.map((song) => song.title),
-                    songsSrc: value.map((song) => song.path)
+                    year: '0000', //for now, we'll think about it later
+                    tracks: songsList.length,
+                    cover: _.union(songsList.map((song) => song.cover)),
+                    artists: _.union(_.flatten(songsList.map((song) => song.albumartist))),
+                    duration: _.sum(songsList.map((song) => song.duration)),
+                    songsList
                 };
                 console.info(album);
             });
