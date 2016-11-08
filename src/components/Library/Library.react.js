@@ -30,7 +30,7 @@ class Library extends React.Component {
                 <div className='library-empty'>
                   <p>Too bad, there is no music in your library =(</p>
                   <p className='sub-message'>
-                    <span>nothing found yet, but that's fine, you can always </span>
+                    <span>nothing found yet, but that&apos;s fine, you can always </span>
                     <a onClick={ this.addMusic }>add your music here</a>
                   </p>
                 </div>

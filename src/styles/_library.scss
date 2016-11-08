@@ -105,9 +105,9 @@ $accent-bg: rgb(29,184,83);
                 color: white;
 
                 tr {
-                    border-bottom: 1px solid;
 
                     td {
+                        border: 0px;
                         padding-top: 13px;
                         text-overflow: ellipsis;
                         white-space: nowrap;
@@ -120,7 +120,7 @@ $accent-bg: rgb(29,184,83);
                         text-align: center;
                         padding: 6px;
                         img{
-                            content: url('../../dist/img/play_arrow_white_24px.svg');
+                            content: url('../../dist/img/play.svg');
                             padding: 5px;
                             border: 1px solid white;
                             border-radius: 50%;
@@ -150,10 +150,10 @@ $accent-bg: rgb(29,184,83);
                         img{
                             visibility: visible;
                             border: 1px solid transparent;
-                            content: url('../../dist/img/volume_up_white_24px.svg');
+                            content: url('../../dist/img/volume_up.svg');
                         }
                         img:hover {
-                            content: url('../../dist/img/pause_white_24px.svg');
+                            content: url('../../dist/img/pause.svg');
                             background-color: transparent;
                             border: 1px solid white;
                         }

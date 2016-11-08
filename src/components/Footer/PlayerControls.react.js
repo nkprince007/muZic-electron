@@ -12,8 +12,19 @@ export default class PlayerControls extends React.Component {
     }
 
     render() {
+        const queue = this.props.queue;
+        const queueCursor = this.props.queueCursor;
+        const song = queue[queueCursor];
+        let title = '';
+        let albumArtist = '';
+
+        if(song !== undefined) {
+            title = song.title;
+            albumArtist = `${song.album} - ${song.artist}`;
+        }
+
         let cover = 'dist/img/album.svg';
-        if (this.props.cover !== null) {
+        if (this.props.cover !== null && this.props.cover !== '' && this.props.cover !== undefined) {
             cover = this.props.cover;
         }
         return (
@@ -30,12 +41,12 @@ export default class PlayerControls extends React.Component {
                     </div>
                     <div className="player-content">
                         <div className="song-details">
-                            <p className="song-title">Shut Up and Dance</p>
-                            <p className="artist-name">WALK THE MOON - Talking is Hard</p>
+                            <p className="song-title">{title}</p>
+                            <p className="artist-name">{albumArtist}</p>
                         </div>
                         <ul className="play-control-buttons">
                             <li><img alt='' src="dist/img/prev.svg" /></li>
-                            <li><img alt='' src="dist/img/play_arrow_white_24px.svg" /></li>
+                            <li><img alt='' src="dist/img/play.svg" /></li>
                             <li><img alt='' src="dist/img/next.svg" /></li>
                         </ul>
                     </div>

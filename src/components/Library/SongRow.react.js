@@ -22,6 +22,7 @@ class SongRow extends React.Component {
 
     selectAndPlay() {
         AppActions.library.selectAndPlay(this.props.trackId);
+        AppActions.library.fetchCover(this.props.track.path);
     }
 
     render() {

@@ -105,7 +105,7 @@ const utils = {
                 const minStr = minutes > 0 ? `${minutes} min, ` : '';
                 const secondsStr = seconds > 0 ? `${seconds} sec` : '';
 
-                if (hoursStr !== '') return hoursStr.concat(minStr);
+                if (hoursStr !== '') return hoursStr.concat(minStr.concat(secondsStr));
                 else if (hoursStr !== '' && minStr === '') return hoursStr.concat(secondsStr);
                 else if (hoursStr === '' && minStr !== '') return minStr.concat(secondsStr);
 
