@@ -147,15 +147,23 @@ $accent-bg: rgb(29,184,83);
                     }
 
                     td:nth-child(1) {
-                        img{
+                        img {
                             visibility: visible;
                             border: 1px solid transparent;
                             content: url('../../dist/img/volume_up.svg');
                         }
                         img:hover {
-                            content: url('../../dist/img/pause.svg');
+                            content: url('../../dist/img/play.svg');
                             background-color: transparent;
                             border: 1px solid white;
+                        }
+                    }
+                }
+
+                tr.play {
+                    td:nth-child(1) {
+                        img:hover {
+                            content: url('../../dist/img/pause.svg');
                         }
                     }
                 }

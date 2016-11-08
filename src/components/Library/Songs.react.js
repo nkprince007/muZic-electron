@@ -6,13 +6,13 @@ import SongRow from './SongRow.react';
 class Songs extends React.Component {
     static propTypes = {
         library: React.PropTypes.array,
-        trackPlayingId: React.PropTypes.string
+        trackPlayingId: React.PropTypes.string,
+        status: React.PropTypes.bool
     }
 
     constructor(props) {
         super(props);
         this.getHeader = this.getHeader.bind(this);
-        this.getSong = this.getSong.bind(this);
     }
 
     getHeader(columns = []) {
@@ -30,22 +30,6 @@ class Songs extends React.Component {
         );
     }
 
-    getSong(data = {}) {
-        // console.log(data);
-        return (
-            <tr
-                key={ data.key }
-            >
-                <td><img alt='' /></td>
-                <td>{data.title}</td>
-                <td>{data.artist}</td>
-                <td>{data.album}</td>
-                <td>{data.genre}</td>
-                <td>{data.playCount}</td>
-            </tr>
-        );
-    }
-
     render() {
         const library = this.props.library;
         const trackPlayingId = this.props.trackPlayingId;
@@ -59,6 +43,7 @@ class Songs extends React.Component {
 
             return (
                 <SongRow
+                    status={ this.props.status }
                     track={ track }
                     index={ index }
                     key={ index }

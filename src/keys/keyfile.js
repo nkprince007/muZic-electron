@@ -12,5 +12,11 @@ export default keymirror({
     LIBRARY_REFRESH_PROGRESS: null,
     LIBRARY_FETCHED_COVER: null,
 
-    SELECT_AND_PLAY: null
+    SELECT_AND_PLAY: null,
+    PLAYER_TOGGLE: null,
+    PLAYER_PLAY: null,
+    PLAYER_PAUSE: null,
+    PLAYER_STOP: null,
+    PLAYER_PREVIOUS: null,
+    PLAYER_NEXT: null,
 });

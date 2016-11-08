@@ -1,5 +1,8 @@
 import React from 'react';
 
+import AppActions from '../../actions/AppActions';
+import Player from '../../lib/player';
+
 export default class PlayerControls extends React.Component {
     static propTypes = {
         app: React.PropTypes.object,
@@ -11,12 +14,37 @@ export default class PlayerControls extends React.Component {
         queueCursor: React.PropTypes.number
     }
 
+    constructor(props) {
+        super(props);
+
+        this.tick = this.tick.bind(this);
+    }
+
+    componentDidMount() {
+        this.timer = setInterval(this.tick, 100);
+    }
+
+    tick() {
+        this.setState({ elapsed: Player.getAudio().currentTime });
+    }
+
+    toggle() {
+        AppActions.player.playToggle();
+    }
+
     render() {
         const queue = this.props.queue;
         const queueCursor = this.props.queueCursor;
         const song = queue[queueCursor];
         let title = '';
         let albumArtist = '';
+        let playerStatus = this.props.playerStatus === 'play';
+
+        if (!playerStatus) {
+            playerStatus = 'dist/img/play.svg';
+        } else {
+            playerStatus = 'dist/img/pause.svg';
+        }
 
         if(song !== undefined) {
             title = song.title;
@@ -46,7 +74,7 @@ export default class PlayerControls extends React.Component {
                         </div>
                         <ul className="play-control-buttons">
                             <li><img alt='' src="dist/img/prev.svg" /></li>
-                            <li><img alt='' src="dist/img/play.svg" /></li>
+                            <li onClick={ this.toggle }><img alt='' src={ playerStatus } /></li>
                             <li><img alt='' src="dist/img/next.svg" /></li>
                         </ul>
                     </div>

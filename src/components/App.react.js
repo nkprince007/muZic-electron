@@ -35,7 +35,8 @@ class App extends React.Component {
                             playlists: store.playlists,
                             tracks: store.tracks[store.tracksCursor].sub,
                             library: store.tracks[store.tracksCursor].all,
-                            trackPlayingId
+                            trackPlayingId,
+                            status: store.playerStatus
                         })
                     }
                 </div>
