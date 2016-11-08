@@ -13,23 +13,21 @@ import Songs from '../components/Library/Songs.react';
 const init = {
 
     app: () => {
-        console.log('App Initialized');
         AppActions.init();
     },
 
     library: () => {
-        console.log('Library Opened');
     }
 
 };
 
 // Router
 const routes = (
-    <Route component={App} path='/' onEnter={init.app}>
+    <Route component={ App } path='/' onEnter={ init.app }>
         <IndexRedirect to="library" />
-        <Route component={Library} path="library" onEnter={init.library}>
+        <Route component={ Library } path="library" onEnter={ init.library }>
             <IndexRedirect to="songs" />
-            <Route component={Songs} path="songs" />
+            <Route component={ Songs } path="songs" />
         </Route>
     </Route>
 );

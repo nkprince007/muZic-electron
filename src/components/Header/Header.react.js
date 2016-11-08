@@ -4,10 +4,14 @@ import React from 'react';
 import WindowControls from './WindowControls.react';
 
 export default class App extends React.Component {
+    static propTypes = {
+        windowControls: React.PropTypes.object
+    }
+
     render() {
         return (
             <header className='header'>
-                <WindowControls active={this.props.windowControls} />
+                <WindowControls active={ this.props.windowControls } />
             </header>
         );
     }

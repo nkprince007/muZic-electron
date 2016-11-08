@@ -20,8 +20,6 @@ browserWindows.main = remote.getCurrentWindow();
 const pathUserData = app.getPath('userData');
 const pathSrc = __dirname;
 
-console.log(pathUserData);
-
 /*
 |----------------------------------------------------------------------
 | Config

@@ -9,6 +9,8 @@ export default keymirror({
     LIBRARY_RESET: null,
     LIBRARY_REFRESH_START: null,
     LIBRARY_REFRESH_END: null,
-    LIBRARY_REFRESH_PROGRESS: null
+    LIBRARY_REFRESH_PROGRESS: null,
+    LIBRARY_FETCHED_COVER: null,
 
+    SELECT_AND_PLAY: null
 });

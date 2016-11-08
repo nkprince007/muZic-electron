@@ -4,6 +4,12 @@ import { Link } from 'react-router';
 import AppActions from '../../actions/AppActions';
 
 class Library extends React.Component {
+    static propTypes = {
+        library: React.PropTypes.array,
+        children: React.PropTypes.object,
+        trackPlayingId: React.PropTypes.string
+    };
+
     constructor(props) {
         super(props);
         this.addMusic = this.addMusic.bind(this);
@@ -25,14 +31,15 @@ class Library extends React.Component {
                   <p>Too bad, there is no music in your library =(</p>
                   <p className='sub-message'>
                     <span>nothing found yet, but that's fine, you can always </span>
-                    <a onClick={this.addMusic}>add your music here</a>
+                    <a onClick={ this.addMusic }>add your music here</a>
                   </p>
                 </div>
             );
         }
 
         return React.cloneElement(this.props.children, {
-            library: this.props.library
+            library: this.props.library,
+            trackPlayingId: this.props.trackPlayingId
         });
     }
 

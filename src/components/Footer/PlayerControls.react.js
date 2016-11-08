@@ -1,10 +1,28 @@
 import React from 'react';
 
 export default class PlayerControls extends React.Component {
+    static propTypes = {
+        app: React.PropTypes.object,
+        playerStatus: React.PropTypes.string,
+        repeat: React.PropTypes.bool,
+        shuffle: React.PropTypes.bool,
+        queue: React.PropTypes.array,
+        cover: React.PropTypes.string,
+        queueCursor: React.PropTypes.number
+    }
+
     render() {
+        let cover = 'dist/img/album.svg';
+        if (this.props.cover !== null) {
+            cover = this.props.cover;
+        }
         return (
             <div className="footer-base">
-                <img className="album-img" alt='' src="dist/img/album.svg" />
+                <img
+                    className="album-img"
+                    alt=''
+                    src={ cover }
+                />
                 <div className="footer-controls">
                     <div className="progress-player">
                         <div className="progress-fill" />

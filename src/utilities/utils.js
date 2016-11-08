@@ -1,23 +1,24 @@
 import mmd from 'musicmetadata';
 import fs from 'fs';
 import path from 'path';
+import globby from 'globby';
 
 const utils = {
 
-    isNullOrEmpty: variable => (
-        variable === null || 
-        variable.length === 0 || 
+    isNullOrEmpty: (variable) => (
+        variable === null ||
+        variable.length === 0 ||
         variable === ''
     ),
 
     getAudioDuration: (audiopath, callback = () => {}) => {
         const audio = new Audio();
-        
+
         audio.addEventListener('loadedmetadata', () => {
             callback(null, audio.duration);
         });
 
-        audio.addEventListener('error', e => {
+        audio.addEventListener('error', (e) => {
             const message = `Error getting the audio duration: (${e.target.error.code}) ${path}`;
             callback(new Error(message), 0);
         });
@@ -26,19 +27,29 @@ const utils = {
         audio.src = audiopath;
     },
 
+    parseUri: (uri) => {
+        const root = process.platform === 'win32' ? '' : path.parse(uri).root;
+        const location = uri
+            .split(path.sep)
+            .map((d, i) => {
+                return (i === 0 ? d : encodeURIComponent(d));
+            }).reduce((a, b) => path.join(a, b));
+        return `file://${root}${location}`;
+    },
+
     getMetadata: (track, callback) => {
         const stream = fs.createReadStream(track);
         mmd(stream, { duration: true }, (err, data) => {
             if (err) console.warn(`An error occured while reading ${track} id3 tags: ${err}`);
-            
+
             const metadata = {
-                album: utils.isNullOrEmpty(data.album) ? 
+                album: utils.isNullOrEmpty(data.album) ?
                     'Unknown' : data.album,
-                albumartist: utils.isNullOrEmpty(data.albumartist) ? 
+                albumartist: utils.isNullOrEmpty(data.albumartist) ?
                     ['Unknown Artist'] : data.albumartist,
-                artist: utils.isNullOrEmpty(data.artist) ? 
+                artist: utils.isNullOrEmpty(data.artist) ?
                     ['Unknown Artist'] : data.artist,
-                title: utils.isNullOrEmpty(data.title) ? 
+                title: utils.isNullOrEmpty(data.title) ?
                     path.parse(track).base : data.title,
                 year: data.year,
                 track: data.track,
@@ -52,18 +63,19 @@ const utils = {
             if (metadata.duration === 0) {
                 utils.getAudioDuration(track, (_err, duration) => {
                     if (_err) console.warn(duration);
-                    
+
                     metadata.duration = duration;
-                    callback(metadata);    
+                    callback(metadata);
                 });
             } else {
                 callback(metadata);
             }
         });
     },
-    removeUselessFolders: folders => {
+
+    removeUselessFolders: (folders) => {
         //duplicates removal
-        const filteredFolders = folders.filter((elem, index) => 
+        const filteredFolders = folders.filter((elem, index) =>
              folders.indexOf(elem) === index
         );
 
@@ -75,8 +87,9 @@ const utils = {
             }
         }));
 
-        return filteredFolders.filter(elem => !foldersToBeRemoved.includes(elem));
+        return filteredFolders.filter((elem) => !foldersToBeRemoved.includes(elem));
     },
+
     getFormatted(type, data) {
         switch (type) {
             case ('SONG_COUNT') : {
@@ -86,12 +99,67 @@ const utils = {
                 const time = parseInt(data, 10);
                 const hours = parseInt(time / 3600, 10);
                 const minutes = parseInt((time % 3600) / 60, 10);
-                return hours.toString().concat('hr '.concat(minutes.toString()).concat('min'));
+                const seconds = parseInt((time % 60), 10);
+
+                const hoursStr = hours > 0 ? `${hours} hr, ` : '';
+                const minStr = minutes > 0 ? `${minutes} min, ` : '';
+                const secondsStr = seconds > 0 ? `${seconds} sec` : '';
+
+                if (hoursStr !== '') return hoursStr.concat(minStr);
+                else if (hoursStr !== '' && minStr === '') return hoursStr.concat(secondsStr);
+                else if (hoursStr === '' && minStr !== '') return minStr.concat(secondsStr);
+
+                return secondsStr;
             }
             default: {
                 return data;
             }
         }
+    },
+
+    parseBase64(format, data) {
+        return `data:image/${format};base64,${data}`;
+    },
+
+    fetchCover(trackPath, callback) {
+        if (!trackPath) {
+            callback(null);
+            return;
+        }
+
+        const stream = fs.createReadStream(trackPath);
+
+        mmd(stream, (err, data) => {
+            if (err) {
+                console.warn(err);
+            } else {
+                if (data.picture[0]) { // If cover in id3 tag
+                    const cover = utils.parseBase64(
+                        data.picture[0].format,
+                        data.picture[0].data.toString('base64')
+                    );
+                    callback(cover);
+                    return;
+                }
+
+                //scan folder for cover image
+                const folder = path.dirname(trackPath);
+                const pattern = path.join(folder, '*');
+                globby(pattern, { nodir: true, follow: false }).then((matches) => {
+                    const cover = matches.find((elem) => {
+                        const parsedPath = path.parse(elem);
+
+                        return ['album', 'albumart', 'folder', 'cover']
+                                    .includes(parsedPath.name.toLowerCase())
+                            && ['.png', '.jpg', '.bmp', '.gif']
+                                    .includes(path.extname(parsedPath.ext.toLowerCase()));
+                    });
+
+                    callback(cover);
+                    return;
+                });
+            }
+        });
     }
 };
 
