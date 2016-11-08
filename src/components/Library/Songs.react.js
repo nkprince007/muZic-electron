@@ -31,6 +31,7 @@ class Songs extends React.Component {
     }
 
     getSong(data = {}) {
+        // console.log(data);
         return (
             <tr
                 key={ data.key }

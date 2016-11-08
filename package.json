@@ -62,6 +62,7 @@
     "keymirror": "^0.1.1",
     "level-js": "^2.2.4",
     "linvodb3": "^3.25.0",
+    "lodash": "^4.16.6",
     "musicmetadata": "^2.0.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

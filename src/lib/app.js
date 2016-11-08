@@ -78,13 +78,29 @@ const Song = new linvodb('song', {
     year: String
 });
 
+const Album = new linvodb('album', {
+    title: String,
+    artists: [String],
+    cover: {
+        default: null
+    },
+    year: String,
+    songs: [String],
+    songsSrc: [String],
+    tracks: Number,
+    duration: Number
+});
+
 Song.ensureIndex({ fieldName: 'path', unique: true });
+Album.ensureIndex({ fieldName: 'title', unique: true });
 
 const models = {
-    Song
+    Song,
+    Album
 };
 
 Promise.promisifyAll(models.Song);
+Promise.promisifyAll(models.Album);
 
 /*
 |----------------------------------------------------------------------
