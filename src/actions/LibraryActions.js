@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Promise from 'bluebird';
 import electron from 'electron';
+import _ from 'lodash';
 import globby from 'globby';
 
 import store from '../store';
@@ -30,6 +31,7 @@ const load = () => {
             });
         }
     });
+    refreshAlbums();
 };
 
 const addFolders = () => {
@@ -52,6 +54,25 @@ const removeFolder = index => {
     store.dispatch({
         type: keys.LIBRARY_REMOVE_FOLDER,
         index
+    });
+};
+
+const refreshAlbums = () => {
+    app.models.Song.find().exec((err, songs) => {
+        if (err) console.warn(err);
+        else {
+            const albums = _.groupBy(songs, 'album');
+            _.forIn(albums, (value, key) => {
+                const album = {
+                    title: key,
+                    cover: _.union(value.map(song => song.cover)),
+                    artists: _.union(_.flatten(value.map(song => song.albumartist))),
+                    songs: value.map(song => song.title),
+                    songsSrc: value.map(song => song.path)
+                };
+                console.log(album);
+            });
+        }
     });
 };
 
@@ -94,6 +115,7 @@ const refresh = () => {
                 addedFiles++;
             }, { concurrent: fsConcurrency }))
             .then(() => {
+            refreshAlbums();
             AppActions.library.load();
             store.dispatch({
                 type: keys.LIBRARY_REFRESH_END
@@ -102,9 +124,19 @@ const refresh = () => {
     });
 };
 
+const fetchCover = coverPath => {
+    utils.fetchCover(coverPath, cover => {
+        store.dispatch({
+            type: keys.LIBRARY_FETCHED_COVER,
+            cover
+        });
+    });
+};
+
 export default {
     load,
     addFolders,
     removeFolder,
-    refresh
+    refresh,
+    fetchCover
 };

@@ -11,8 +11,8 @@ class Songs extends React.Component {
 
     getHeader(columns = []) {
         const headers = [];
-        columns.forEach(col => {
-            headers.push(<th>{col}</th>);
+        columns.forEach((col, i) => {
+            headers.push(<th key={i}>{col}</th>);
         });
         return (
            <thead>
@@ -25,6 +25,7 @@ class Songs extends React.Component {
     }
 
     getSong(data = {}) {
+        // console.log(data);
         return (
             <tr key={data.key}>
                 <td><img alt='' /></td>
