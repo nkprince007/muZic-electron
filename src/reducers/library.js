@@ -1,9 +1,70 @@
 import app from '../lib/app';
 import keys from '../keys/keyfile';
 import utils from '../utilities/utils';
+import Player from '../lib/player';
 
 export default (state = {}, payload) => {
     switch (payload.type) {
+        case (keys.SELECT_AND_PLAY): {
+            const queue = [...state.tracks[state.tracksCursor].sub];
+            const id = payload.trackId;
+
+            let queueCursor = null;
+            let queuePosition = null;
+
+            for (let i = 0; i < queue.length; i++) {
+                if (queue[i]._id === id) {
+                    queuePosition = i;
+                    queueCursor = i;
+                    break;
+                }
+            }
+
+            if (queuePosition !== null) {
+                const uri = utils.parseUri(queue[queuePosition].path);
+
+                Player.setAudioSrc(uri);
+                Player.play();
+
+                if (state.shuffle) {
+                    let index = 0;
+
+                    for (let i = 0; i < queue.length; i++) {
+                        if (queue[i]._id === id) {
+                            index = i;
+                            break;
+                        }
+                    }
+
+                    const firstTrack = queue[index];
+                    queue.splice(id, 1);
+
+                    let m = queue.length;
+                    let t;
+                    let i;
+                    while (m) {
+                        i = Math.floor(Math.random() * m--);
+
+                        t = queue[m];
+                        queue[m] = queue[i];
+                        queue[i] = t;
+                    }
+
+                    queue.unshift(firstTrack);
+                    queueCursor = 0;
+                }
+
+                return {
+                    ...state,
+                    queue,
+                    queueCursor,
+                    oldQueue: queue,
+                    oldQueueCursor: queueCursor,
+                    playerStatus: 'play'
+                };
+            }
+            return state;
+        }
         case (keys.LIBRARY_ADD_FOLDERS): {
             const folders = payload.folders;
             let musicFolders = app.config.get('musicFolders');
@@ -32,6 +93,12 @@ export default (state = {}, payload) => {
                 return { ...state };
             }
             return state;
+        }
+        case (keys.LIBRARY_FETCHED_COVER): {
+            return {
+                ...state,
+                cover: payload.cover
+            };
         }
         case (keys.LIBRARY_REFRESH_START): {
             return {

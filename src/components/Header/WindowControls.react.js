@@ -20,9 +20,9 @@ export default class WindowControls extends React.Component {
         return (
             <div className="window-controls clearfix">
                 <ul className="window-control-buttons">
-                    <li onClick={this.winClose} />
-                    <li onClick={this.winMinimize} />
-                    <li onClick={this.winMaximize} />
+                    <li onClick={ this.winClose } />
+                    <li onClick={ this.winMinimize } />
+                    <li onClick={ this.winMaximize } />
                 </ul>
                 <p className="title">muZic</p>
             </div>

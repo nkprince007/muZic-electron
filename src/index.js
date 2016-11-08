@@ -20,8 +20,8 @@ require('./styles/_footer.scss');
 require('./styles/_library.scss');
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router history={hashHistory} routes={routes} />
+    <Provider store={ store }>
+        <Router history={ hashHistory } routes={ routes } />
     </Provider>,
     document.getElementById('react-content')
 );
