@@ -29,34 +29,25 @@ $footer-bg : #282828;
     flex-direction: column;
     justify-content: center;
 
-    .progress-player {
-      width: 100%;
-    }
-
-    .player-progress-bar {
+    .progress {
       top: 0px;
       position: absolute;
-      -webkit-appearance: none;
-      outline: none;
-  
-      &::-webkit-slider-runnable-track {
-        height: 4px;
-        cursor: pointer;
-        background: $accent-bg;
-      }
+      border: 0px solid transparent;
+      border-radius: 0px;
+      height: 5px;
+      width: 100%;
+      margin: 0px;
+      background-color: transparent;
+      z-index: 1000;
 
-      &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        border-radius: 50%;
-        margin-top: -6px;
-        height: 16px;
-        width: 16px;
-        background: $accent-bg;
+      .progress-bar {
+        background-color: $accent-bg;
       }
     }
 
     .player-content {
       display: inline-block;
+      height: 100%;
 
       .song-details {
         -webkit-user-select: none;
@@ -87,9 +78,10 @@ $footer-bg : #282828;
       }
 
       .play-control-buttons {
-        padding: 10px 0px;
+        padding: 15px 0px;
         margin: 0px;
         text-align: center;
+        height: 100%;
 
         li {
           padding: 15px;

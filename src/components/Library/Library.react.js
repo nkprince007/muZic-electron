@@ -8,7 +8,7 @@ class Library extends React.Component {
         library: React.PropTypes.array,
         children: React.PropTypes.object,
         trackPlayingId: React.PropTypes.string,
-        status: React.PropTypes.bool
+        status: React.PropTypes.string
     };
 
     constructor(props) {

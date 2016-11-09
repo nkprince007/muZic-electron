@@ -7,7 +7,7 @@ class Songs extends React.Component {
     static propTypes = {
         library: React.PropTypes.array,
         trackPlayingId: React.PropTypes.string,
-        status: React.PropTypes.bool
+        status: React.PropTypes.string
     }
 
     constructor(props) {
@@ -47,7 +47,7 @@ class Songs extends React.Component {
                     track={ track }
                     index={ index }
                     key={ index }
-                    trackId={ track._id }
+                    trackPlayingId={ trackPlayingId }
                     playing={ playing }
                 />
             );
