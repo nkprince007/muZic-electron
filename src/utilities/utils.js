@@ -37,6 +37,15 @@ const utils = {
         return `file://${root}${location}`;
     },
 
+    chunkArray: (array, chunkLength) => {
+        const chunks = [];
+
+        for(let i = 0; i < array.length; i += chunkLength) {
+            chunks.push(array.slice(i, i + chunkLength));
+        }
+        return chunks;
+    },
+
     getMetadata: (track, callback) => {
         const stream = fs.createReadStream(track);
         mmd(stream, { duration: true }, (err, data) => {

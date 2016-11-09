@@ -42,9 +42,8 @@ $secondary-text: #757575;
 
     .library-content {
         width: 100%;
-        height: 100%;
-        top: 55px;
-        position: absolute;
+        height: fit-content;
+        margin-top: 50px;
 
         .library-empty {
             width: 100%;
@@ -74,8 +73,12 @@ $secondary-text: #757575;
         }
 
         .songs-viewbox {
-            margin:auto;
             width: 92%;
+            position: fixed;
+            top: 105px;
+            bottom: 100px;
+            left: 4%;
+            overflow: scroll;
 
             h1 {
                 color: $primary-text;
@@ -98,7 +101,7 @@ $secondary-text: #757575;
 
             thead {
                 top: 110px;
-                border-bottom: 0.5px;
+                border-bottom: 1px;
                 font-size: 15px;
                 text-transform: uppercase;
 
@@ -110,6 +113,7 @@ $secondary-text: #757575;
             tbody {
                 font-size: 20px;
                 color: $primary-text;
+                border: 0px;
 
                 tr {
                     * {
@@ -125,11 +129,9 @@ $secondary-text: #757575;
                         font-size: 15px;
                     }
                     td {
+                        height: 69px;
                         border: 0px;
                         padding-top: 13px;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                        overflow: hidden;
                         max-width: 400px;
                     }
 
