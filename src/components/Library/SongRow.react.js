@@ -32,8 +32,10 @@ class SongRow extends React.Component {
         const trackId = this.props.track._id;
         if(trackId === playingId)
             AppActions.player.playToggle();
-        else
+        else {
             AppActions.library.selectAndPlay(trackId);
+            AppActions.library.fetchCover(this.props.track.path);
+        }
     }
 
     render() {
@@ -52,9 +54,10 @@ class SongRow extends React.Component {
                 onDoubleClick={ this.selectAndPlay }
             >
                 <td><img onClick={ this.toggle } alt='' /></td>
-                <td>{track.title}</td>
-                <td>{track.artist}</td>
-                <td>{track.album}</td>
+                <td className="col-sm-8">
+                    <h3>{track.title}</h3>
+                    <p>From {track.album} by {track.artist}</p>
+                </td>
                 <td>{track.genre}</td>
                 <td>{track.playCount}</td>
             </tr>

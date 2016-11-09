@@ -1,6 +1,6 @@
-$header-bg : #282828;
-
-$title-color: rgb(156,152,152);
+$header-bg : #FFFFFF;
+$light-prim: #B3E5FC;
+$title-color: #414141;
 
 $close-btn-color: rgb(255,74,59);
 $minimize-btn-color: rgb(251,210,0);
@@ -8,13 +8,14 @@ $maximize-btn-color: rgb(0, 231, 67);
 
 .header {
     background-color: $header-bg;
-    padding: 10px 0px;
+    padding: 0px;
     -webkit-app-region: drag;
     -webkit-user-select: none;
     top: 0px;
     position: fixed;
     width: 100%;
     z-index: 1000;
+    height: fit-content;
 
     &:hover {
       cursor: default;
@@ -23,15 +24,14 @@ $maximize-btn-color: rgb(0, 231, 67);
     .title {
       color: $title-color;
       width: 100%;
-      font-size: 25px;
-      letter-spacing: 5px;
-      font-family: 'Raleway-Regular';
-      font-variant: small-caps;
+      font-size: 40px;
+      font-family: 'Product Sans';
+      font-weight: bolder;
       text-align: center;
       margin: 0px;
 
       &:hover {
-        color: white;
+        color: #212121;
       }
     }
 }
@@ -48,6 +48,7 @@ $maximize-btn-color: rgb(0, 231, 67);
     padding: 0px;
     display: inline-block;
     position: absolute;
+    -webkit-app-region: no-drag;
 
     li {
         margin: 0px;

@@ -1,11 +1,14 @@
-$header-bg : #282828;
-$accent-bg: rgb(29,184,83);
+$header-bg : #FFFFFF;
+$accent-bg: #8BC34A;
+$nav-color: #616161;
+$primary-text: #212121;
+$secondary-text: #757575;
 
 .library {
     width: 100%;
-    height: 100%;
 
     * {
+        -webkit-app-region: no-drag;
         transition: 0.2s ease-in-out;
     }
 
@@ -15,11 +18,12 @@ $accent-bg: rgb(29,184,83);
         width: 100%;
         z-index: 1000;
         background-color: $header-bg;
+        box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
     }
 
     .nav-item {
         a {
-            color: white;
+            color: $nav-color;
             font-weight: bold;
             font-size: 20px;
             text-transform: uppercase;
@@ -73,8 +77,12 @@ $accent-bg: rgb(29,184,83);
             margin:auto;
             width: 92%;
 
-            h1, p {
-                color: white;
+            h1 {
+                color: $primary-text;
+                font-weight: bold;
+            }
+            p {
+                color: $secondary-text;
             }
         }
 
@@ -85,44 +93,57 @@ $accent-bg: rgb(29,184,83);
 
             * {
                 transition: 0s;
-                border-color: #414141;
+                border-color: $secondary-text;
             }
 
             thead {
                 top: 110px;
                 border-bottom: 0.5px;
-                font-size: 13px;
+                font-size: 15px;
                 text-transform: uppercase;
 
                 th {
                     letter-spacing: 1ch;
-                    font-weight: lighter;
                 }
             }
 
             tbody {
-                font-size: 16px;
-                color: white;
+                font-size: 20px;
+                color: $primary-text;
 
                 tr {
-
+                    * {
+                        margin: 0px;
+                    }
+                    h3, p {
+                        width: 100%;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+                    p {
+                        font-size: 15px;
+                    }
                     td {
                         border: 0px;
                         padding-top: 13px;
                         text-overflow: ellipsis;
                         white-space: nowrap;
                         overflow: hidden;
-                        max-width: 200px;
+                        max-width: 400px;
                     }
 
                     td:nth-child(1) {
-                        width: fit-content;
+                        padding: 19px 10px;
                         text-align: center;
-                        padding: 6px;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+                        justify-content: center;
+
                         img{
                             content: url('../../dist/img/play.svg');
-                            padding: 5px;
-                            border: 1px solid white;
+                            border: 3px solid white;
                             border-radius: 50%;
                             visibility: hidden;
                         }
@@ -135,27 +156,21 @@ $accent-bg: rgb(29,184,83);
                 }
 
                 tr.active {
+                    * {
+                        color: white;
+                    }
                     td {
-                        color: $accent-bg;
-                        background-color: inherit;
+                        background-color: $accent-bg;
                     }
-
-                    &:hover td:nth-child(1) {
-                        img {
-                            background-color: #212121;
-                        }
-                    }
-
                     td:nth-child(1) {
                         img {
                             visibility: visible;
-                            border: 1px solid transparent;
+                            border: 3px solid transparent;
                             content: url('../../dist/img/volume_up.svg');
                         }
                         img:hover {
                             content: url('../../dist/img/play.svg');
-                            background-color: transparent;
-                            border: 1px solid white;
+                            border: 3px solid white;
                         }
                     }
                 }
@@ -168,8 +183,12 @@ $accent-bg: rgb(29,184,83);
                     }
                 }
 
-                tr:hover {
-                    background-color: #414141;
+                tr:hover, tr.active:hover {
+                    background-color: #0288D1;
+                    * {
+                        color: white;
+                    }
+                    box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.2);
                 }
             }
         }

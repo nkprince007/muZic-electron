@@ -22,7 +22,7 @@ export default class PlayerControls extends React.Component {
     }
 
     componentDidMount() {
-        this.timer = setInterval(this.tick, 50);
+        this.timer = setInterval(this.tick, 250);
     }
 
     tick() {

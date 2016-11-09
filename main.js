@@ -55,3 +55,5 @@ app.on('activate', () => {
         createWindow();
     }
 });
+
+app.setName('muZic');

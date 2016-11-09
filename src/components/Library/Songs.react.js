@@ -53,7 +53,7 @@ class Songs extends React.Component {
             );
         });
 
-        const columns = ['Song', 'Artist', 'Album', 'Genre', 'Plays'];
+        const columns = ['Song', 'Genre', 'Plays'];
         const songCount = utils.getFormatted('SONG_COUNT', rowCount);
         const totalTime = utils.getFormatted('TOTAL_DURATION', duration);
 
