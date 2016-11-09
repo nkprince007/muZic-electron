@@ -7,10 +7,11 @@ class SongRow extends React.Component {
     static propTypes = {
         children: React.PropTypes.object,
         selected: React.PropTypes.bool,
-        trackId: React.PropTypes.string,
+        trackPlayingId: React.PropTypes.string,
         index: React.PropTypes.number,
         playing: React.PropTypes.bool,
-        track: React.PropTypes.object
+        track: React.PropTypes.object,
+        status: React.PropTypes.string
     }
 
     constructor(props) {
@@ -18,17 +19,31 @@ class SongRow extends React.Component {
         this.state = {};
 
         this.selectAndPlay = this.selectAndPlay.bind(this);
+        this.toggle = this.toggle.bind(this);
     }
 
     selectAndPlay() {
-        AppActions.library.selectAndPlay(this.props.trackId);
+        AppActions.library.selectAndPlay(this.props.track._id);
         AppActions.library.fetchCover(this.props.track.path);
+    }
+
+    toggle() {
+        const playingId = this.props.trackPlayingId;
+        const trackId = this.props.track._id;
+        if(trackId === playingId)
+            AppActions.player.playToggle();
+        else
+            AppActions.library.selectAndPlay(trackId);
     }
 
     render() {
         const track = this.props.track;
         const key = this.props.index;
-        const trackClasses = classnames({ active: this.props.playing });
+        const status = this.props.status === 'play';
+        let trackClasses = classnames({ active: this.props.playing });
+        if (track._id === this.props.trackPlayingId) {
+            trackClasses = classnames({ active: this.props.playing, play: status });
+        }
 
         return (
             <tr
@@ -36,7 +51,7 @@ class SongRow extends React.Component {
                 className={ trackClasses }
                 onDoubleClick={ this.selectAndPlay }
             >
-                <td><img alt='' /></td>
+                <td><img onClick={ this.toggle } alt='' /></td>
                 <td>{track.title}</td>
                 <td>{track.artist}</td>
                 <td>{track.album}</td>

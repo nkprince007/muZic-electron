@@ -1,4 +1,8 @@
 import React from 'react';
+import { ProgressBar } from 'react-bootstrap';
+
+import AppActions from '../../actions/AppActions';
+import Player from '../../lib/player';
 
 export default class PlayerControls extends React.Component {
     static propTypes = {
@@ -11,12 +15,43 @@ export default class PlayerControls extends React.Component {
         queueCursor: React.PropTypes.number
     }
 
+    constructor(props) {
+        super(props);
+
+        this.tick = this.tick.bind(this);
+    }
+
+    componentDidMount() {
+        this.timer = setInterval(this.tick, 50);
+    }
+
+    tick() {
+        this.setState({ elapsed: Player.getAudio().currentTime });
+    }
+
+    toggle() {
+        AppActions.player.playToggle();
+    }
+
     render() {
         const queue = this.props.queue;
         const queueCursor = this.props.queueCursor;
         const song = queue[queueCursor];
+
         let title = '';
         let albumArtist = '';
+        let playerStatus = this.props.playerStatus === 'play';
+        let elapsedPercent = 0;
+
+        if (song !== undefined && this.state.elapsed < song.duration) {
+            elapsedPercent = this.state.elapsed * 100 / song.duration;
+        }
+
+        if (!playerStatus) {
+            playerStatus = 'dist/img/play.svg';
+        } else {
+            playerStatus = 'dist/img/pause.svg';
+        }
 
         if(song !== undefined) {
             title = song.title;
@@ -35,10 +70,11 @@ export default class PlayerControls extends React.Component {
                     src={ cover }
                 />
                 <div className="footer-controls">
-                    <div className="progress-player">
+                    {/*<div className="progress-player">
                         <div className="progress-fill" />
                         <input className="player-progress-bar" type="range" min="0" max="100" />
-                    </div>
+                    </div>*/}
+                    <ProgressBar now={ elapsedPercent } />
                     <div className="player-content">
                         <div className="song-details">
                             <p className="song-title">{title}</p>
@@ -46,7 +82,7 @@ export default class PlayerControls extends React.Component {
                         </div>
                         <ul className="play-control-buttons">
                             <li><img alt='' src="dist/img/prev.svg" /></li>
-                            <li><img alt='' src="dist/img/play.svg" /></li>
+                            <li onClick={ this.toggle }><img alt='' src={ playerStatus } /></li>
                             <li><img alt='' src="dist/img/next.svg" /></li>
                         </ul>
                     </div>

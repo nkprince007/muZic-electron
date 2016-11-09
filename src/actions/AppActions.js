@@ -3,6 +3,7 @@ import electron from 'electron';
 import app from '../lib/app';
 
 import LibraryActions from './LibraryActions';
+import PlayerActions from './PlayerActions';
 
 const ipcRenderer = electron.ipcRenderer;
 
@@ -48,8 +49,10 @@ const fullScreen = () => {
 };
 
 export default {
-    init,
     library: LibraryActions,
+    player: PlayerActions,
+
+    init,
     close,
     restart,
     start,

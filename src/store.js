@@ -7,8 +7,8 @@ import initialState from './reducers/initial-state';
 const logger = createLogger();
 
 const store = createStore(
-    reducer, 
-    initialState, 
+    reducer,
+    initialState,
     applyMiddleware(logger)
 );
 
