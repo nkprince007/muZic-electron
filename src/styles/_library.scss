@@ -9,7 +9,6 @@ $secondary-text: #757575;
 
     * {
         -webkit-app-region: no-drag;
-        transition: 0.2s ease-in-out;
     }
 
     .nav {
@@ -18,7 +17,6 @@ $secondary-text: #757575;
         width: 100%;
         z-index: 1000;
         background-color: $header-bg;
-        box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
     }
 
     .nav-item {
@@ -79,6 +77,17 @@ $secondary-text: #757575;
             bottom: 100px;
             left: 4%;
             overflow: scroll;
+        }
+
+        .songs-message {
+            position: fixed;
+            top: 105px;
+            left: 0%;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+            padding: 0 4%;
 
             h1 {
                 color: $primary-text;
@@ -89,9 +98,16 @@ $secondary-text: #757575;
             }
         }
 
+        .songs-table {
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
         .songs-view {
             color: teal;
             margin: auto;
+            margin-top: 100px;
             width: 100%;
 
             * {
@@ -118,12 +134,12 @@ $secondary-text: #757575;
                 tr {
                     * {
                         margin: 0px;
-                    }
-                    h3, p {
-                        width: 100%;
                         text-overflow: ellipsis;
                         white-space: nowrap;
                         overflow: hidden;
+                    }
+                    h3, p {
+                        width: 100%;
                     }
                     p {
                         font-size: 15px;
@@ -131,8 +147,9 @@ $secondary-text: #757575;
                     td {
                         height: 69px;
                         border: 0px;
+                        padding: 0px;
+                        margin: 0px;
                         padding-top: 13px;
-                        max-width: 400px;
                     }
 
                     td:nth-child(1) {
@@ -155,6 +172,20 @@ $secondary-text: #757575;
                         visibility: visible;
                     }
 
+                    td:nth-child(2) {
+                        width: 60%;
+                        max-width: 500px;
+                    }
+
+                    td:nth-child(3) {
+                        width: 20%;
+                        max-width: 100px;
+                    }
+
+                    td:nth-child(4) {
+                        width: 10%;
+                        max-width: 50px;
+                    }
                 }
 
                 tr.active {

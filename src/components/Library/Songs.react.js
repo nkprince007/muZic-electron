@@ -22,7 +22,8 @@ class Songs extends React.Component {
         this.getHeader = this.getHeader.bind(this);
         this.scrollList = this.scrollList.bind(this);
 
-        this.rowHeight = 68;
+        this.rowHeight = 69;
+        this.correction = 0;
     }
 
     getHeader(columns = []) {
@@ -41,7 +42,8 @@ class Songs extends React.Component {
     }
 
     scrollList() {
-        this.setState({ scrollTop: document.querySelector('.songs-viewbox').scrollTop });
+        this.setState({ scrollTop: document.querySelector('.songs-viewbox').scrollTop - this.correction });
+        console.warn(this.state.scrollTop);
     }
 
     render() {
@@ -77,10 +79,16 @@ class Songs extends React.Component {
                     );
                 });
 
+                const chunkListScrollHelperClasses = {
+                    transform: `translate3d(0, ${ (this.rowHeight * chunkLength * (tilesScrolled + indexChunk)) }px, 0)`
+                };
+
                 return (
-                    <tbody key={ indexChunk }>
-                        { list }
-                    </tbody>
+                    <table key={ indexChunk } style={ chunkListScrollHelperClasses } className="table table-inverse table-sm songs-view songs-table">
+                        <tbody>
+                            { list }
+                        </tbody>
+                    </table>
                 );
             });
 
@@ -100,20 +108,24 @@ class Songs extends React.Component {
         //     );
         // });
 
-        const columns = ['Song', 'Genre', 'Plays'];
+        // const columns = ['Song', 'Genre', 'Plays'];
         const songCount = utils.getFormatted('SONG_COUNT', rowCount);
         const totalTime = utils.getFormatted('TOTAL_DURATION', duration);
 
         {/*style={ { height: rowCount * this.rowHeight } } */}
 
+
         return (
             <div onScroll={ this.scrollList } className="songs-viewbox">
-                <h1>Songs</h1>
-                <p>{songCount} Songs, {totalTime}</p>
-                <table style={ { height: rowCount * this.rowHeight } } className="table table-inverse table-sm songs-view">
-                    {this.getHeader(columns)}
-                    {trackTiles}
-                </table>
+                <div className="songs-message">
+                    <h1>Songs</h1>
+                    <p>{songCount} Songs, {totalTime}</p>
+                </div>
+                <div className="songs-container">
+                    <div style={ { height: rowCount * this.rowHeight } }>
+                        {trackTiles}
+                    </div>
+                </div>
             </div>
         );
     }

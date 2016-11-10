@@ -72,7 +72,7 @@ const refreshAlbums = () => {
                     duration: _.sum(songsList.map((song) => song.duration)),
                     songsList
                 };
-                console.info(album);
+                // console.info(album);
             });
         }
     });
@@ -113,7 +113,7 @@ const refresh = () => {
             }).then((song) => app.models.Song.insert(song))
             .then(() => {
                 const percent = parseInt((addedFiles * 100) / totalFiles, 10);
-                console.info(percent);
+                // console.info(percent);
                 addedFiles++;
             }, { concurrent: fsConcurrency }))
             .then(() => {
