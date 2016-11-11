@@ -8,6 +8,7 @@
   <body>
     <div id="react-content"></div>
     <script>
+      const electron = require('electron');
       (function() {
         const script = document.createElement('script');
         script.src = process.env.ENV === 'development' ? 'http://localhost:9000/dist/bundle.js' : './dist/bundle.js';

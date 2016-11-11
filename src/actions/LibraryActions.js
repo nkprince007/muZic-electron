@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import Promise from 'bluebird';
-import electron from 'electron';
 import _ from 'lodash';
 import globby from 'globby';
 

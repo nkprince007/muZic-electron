@@ -2,7 +2,6 @@ import linvodb from 'linvodb3';
 import leveljs from 'level-js';
 import Promise from 'bluebird';
 import teeny from 'teeny-conf';
-import electron from 'electron';
 import path from 'path';
 
 const remote = electron.remote;

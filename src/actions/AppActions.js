@@ -1,5 +1,3 @@
-import electron from 'electron';
-
 import app from '../lib/app';
 
 import LibraryActions from './LibraryActions';

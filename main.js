@@ -1,4 +1,3 @@
-const electron = require('electron');
 const path = require('path');
 const url = require('url');
 
@@ -40,7 +39,7 @@ function createWindow() {
 }
 
 app.on('ready', () => {
-    const configManager = new ConfigManager(app);
+    new ConfigManager(app);
     createWindow();
 });
 

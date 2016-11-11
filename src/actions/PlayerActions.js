@@ -1,6 +1,5 @@
 import store from '../store';
 import keys from '../keys/keyfile';
-import electron from 'electron';
 
 // import app from '../lib/app';
 // import Player from '../lib/player.js';
