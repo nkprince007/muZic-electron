@@ -56,7 +56,7 @@ class SongRow extends React.Component {
                 <td><img onClick={ this.toggle } alt='' /></td>
                 <td className="col-sm-8">
                     <h3>{track.title}</h3>
-                    <p>From {track.album} by {track.artist}</p>
+                    <p>{track.album} - {track.artist}</p>
                 </td>
                 <td>{track.genre}</td>
                 <td>{track.playCount}</td>

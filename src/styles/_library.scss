@@ -44,8 +44,10 @@ $secondary-text: #757575;
         margin-top: 50px;
 
         .library-empty {
+            position: absolute;
+            top: 100px;
+            bottom: 100px;
             width: 100%;
-            height: 100%;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -53,7 +55,7 @@ $secondary-text: #757575;
             align-items: center;
 
             p {
-                color: white;
+                color: $secondary-text;
                 font-size: 40px;
             }
             p.sub-message {
@@ -142,6 +144,7 @@ $secondary-text: #757575;
                         width: 100%;
                     }
                     p {
+                        text-transform: capitalize;
                         font-size: 15px;
                     }
                     td {

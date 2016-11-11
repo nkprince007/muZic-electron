@@ -2,7 +2,7 @@ const electron = require('electron');
 const path = require('path');
 const url = require('url');
 
-// const ConfigManager = require('./config');
+const ConfigManager = require('./config');
 
 const app = electron.app;
 // const nativeImage = electron.nativeImage;
@@ -40,7 +40,7 @@ function createWindow() {
 }
 
 app.on('ready', () => {
-  // const configManager = new ConfigManager(app);
+    const configManager = new ConfigManager(app);
     createWindow();
 });
 

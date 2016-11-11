@@ -43,7 +43,6 @@ class Songs extends React.Component {
 
     scrollList() {
         this.setState({ scrollTop: document.querySelector('.songs-viewbox').scrollTop - this.correction });
-        console.warn(this.state.scrollTop);
     }
 
     render() {
