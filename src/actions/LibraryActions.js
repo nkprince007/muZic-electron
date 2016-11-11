@@ -31,7 +31,7 @@ const load = () => {
             });
         }
     });
-    refreshAlbums();
+    // refreshAlbums();
 };
 
 const addFolders = () => {
@@ -72,7 +72,7 @@ const refreshAlbums = () => {
                     duration: _.sum(songsList.map((song) => song.duration)),
                     songsList
                 };
-                // console.info(album);
+                console.info(album);
             });
         }
     });
@@ -102,6 +102,13 @@ const refresh = () => {
                     path.extname(filePath).toLowerCase())
         ))
         .then((supportedFiles) => {
+            if(supportedFiles.length === 0) {
+                store.dispatch({
+                    type: keys.LIBRARY_REFRESH_END
+                });
+                return;
+            }
+
             let addedFiles = 0;
             const totalFiles = supportedFiles.length;
             return Promise.map(supportedFiles, (filePath) =>
@@ -110,10 +117,10 @@ const refresh = () => {
                     return getMetadataAsync(filePath);
                 }
                 return docs[0];
-            }).then((song) => app.models.Song.insert(song))
+            }).then((song) => app.models.Song.insertAsync(song))
             .then(() => {
                 const percent = parseInt((addedFiles * 100) / totalFiles, 10);
-                // console.info(percent);
+                console.info(`Progress: ${percent}`);
                 addedFiles++;
             }, { concurrent: fsConcurrency }))
             .then(() => {
