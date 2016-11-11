@@ -1,7 +1,30 @@
-muZic player
-============
+**muZic**
+=========
+A light weight **music** player built around web technologies. Made by Naveen with ❤️.
 
-This is the boilerplate to work on **electron** with the latest **EcmaScript-2015** syntax and **React JS, Redux** frameworks. 
+What does it use?
+-----------------
+- [**Node.js**][1] for backend
+- [**electron**][2] for Chromium Browser
+- [**React.js**][3] for the front-end
+- [**Redux**][4] as data-flow pattern
+- [**SCSS**][5] for design and styling
 
+
+Developer Notes
+---------------
+To test:
+- clone the repo;
+- run `npm install`;
+- run `npm run dev`;
+
+Highly Production & Development ready;
 It works with **webpack** middleware to run a Hot Module Reload with an **express** server on localhost. It is entirely **development** ready.
 
+Any one who'd like to collaborate, feel free to mail me at <mailto:nkprince007@gmail.com>
+
+[1]:(http://nodejs.org/en)
+[2]:(http://electron.atom.io/)
+[3]:(http://facebook.github.io/react/)
+[4]:(http://redux.js.org/)
+[5]:(http://sass-lang.com/)
