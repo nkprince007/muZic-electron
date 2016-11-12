@@ -23,8 +23,8 @@ It works with **webpack** middleware to run a Hot Module Reload with an **expres
 
 Any one who'd like to collaborate, feel free to mail me at <mailto:nkprince007@gmail.com>
 
-[1]:(http://nodejs.org/en)
-[2]:(http://electron.atom.io/)
-[3]:(http://facebook.github.io/react/)
-[4]:(http://redux.js.org/)
-[5]:(http://sass-lang.com/)
+[1]: http://nodejs.org/en
+[2]: http://electron.atom.io/
+[3]: http://facebook.github.io/react/
+[4]: http://redux.js.org/
+[5]: http://sass-lang.com/

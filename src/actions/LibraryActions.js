@@ -30,7 +30,28 @@ const load = () => {
             });
         }
     });
-    // refreshAlbums();
+    loadAlbums();
+};
+
+const loadAlbums = () => {
+    const querySort = {
+        title: 1
+    };
+    app.models.Album.find().sort(querySort).exec((err, albums) => {
+        if (err) console.warn(err);
+        else if (albums.length === 0) {
+            refreshAlbums();
+        } else {
+            let songs = 0;
+            let noAlbums = 0;
+            albums.forEach((album) => {
+                noAlbums++;
+                songs += album.tracks;
+                console.info(album.title);
+            });
+            console.info(`Songs: ${songs}, Albums: ${noAlbums}`);
+        }
+    });
 };
 
 const addFolders = () => {
@@ -71,10 +92,11 @@ const refreshAlbums = () => {
                     duration: _.sum(songsList.map((song) => song.duration)),
                     songsList
                 };
-                console.info(album);
+                app.models.Album.insert(album);
             });
         }
     });
+    loadAlbums();
 };
 
 const refresh = () => {
@@ -95,41 +117,41 @@ const refresh = () => {
             const pattern = path.join(folder, '**/*.*');
             return globby(pattern, { nodir: true, follow: true });
         }))
-        .then((filesArrays) => filesArrays
-            .reduce((acc, array) => acc.concat(array), [])
-            .filter((filePath) => app.supportedExtensions.includes(
-                    path.extname(filePath).toLowerCase())
-        ))
-        .then((supportedFiles) => {
-            if(supportedFiles.length === 0) {
-                store.dispatch({
-                    type: keys.LIBRARY_REFRESH_END
-                });
-                return;
-            }
+    .then((filesArrays) => filesArrays
+        .reduce((acc, array) => acc.concat(array), [])
+        .filter((filePath) => app.supportedExtensions.includes(
+                path.extname(filePath).toLowerCase())
+    ))
+    .then((supportedFiles) => {
+        if(supportedFiles.length === 0) {
+            store.dispatch({
+                type: keys.LIBRARY_REFRESH_END
+            });
+            return;
+        }
 
-            let addedFiles = 0;
-            const totalFiles = supportedFiles.length;
-            return Promise.map(supportedFiles, (filePath) =>
-            app.models.Song.findAsync({ path: filePath }).then((docs) => {
-                if (docs.length === 0) {
-                    return getMetadataAsync(filePath);
-                }
-                return docs[0];
-            }).then((song) => app.models.Song.insertAsync(song))
-            .then(() => {
-                const percent = parseInt((addedFiles * 100) / totalFiles, 10);
-                console.info(`Progress: ${percent}`);
-                addedFiles++;
-            }, { concurrent: fsConcurrency }))
-            .then(() => {
-                refreshAlbums();
-                AppActions.library.load();
-                store.dispatch({
-                    type: keys.LIBRARY_REFRESH_END
-                });
-            }).catch((err) => console.warn(err));
-        });
+        let addedFiles = 0;
+        const totalFiles = supportedFiles.length;
+        return Promise.map(supportedFiles, (filePath) =>
+        app.models.Song.findAsync({ path: filePath }).then((docs) => {
+            if (docs.length === 0) {
+                return getMetadataAsync(filePath);
+            }
+            return docs[0];
+        }).then((song) => app.models.Song.insertAsync(song))
+        .then(() => {
+            const percent = parseInt((addedFiles * 100) / totalFiles, 10);
+            console.info(`Progress: ${percent}`);
+            addedFiles++;
+        }, { concurrent: fsConcurrency }))
+        .then(() => {
+            refreshAlbums();
+            AppActions.library.load();
+            store.dispatch({
+                type: keys.LIBRARY_REFRESH_END
+            });
+        }).catch((err) => console.warn(err));
+    });
 };
 
 const fetchCover = (coverPath) => {
