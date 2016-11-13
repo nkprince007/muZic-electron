@@ -8,7 +8,7 @@ import AlbumRow from './AlbumRow.react';
 class Albums extends React.Component {
     static propTypes = {
         library: React.PropTypes.array,
-        trackPlayingId: React.PropTypes.object,
+        trackPlayingId: React.PropTypes.string,
         status: React.PropTypes.string,
         albums: React.PropTypes.array
     }
@@ -30,8 +30,8 @@ class Albums extends React.Component {
         });
 
         const r = [];
-        for(let i = 0; i < 25; i++) {
-            r.push(<AlbumRow key={ i } index={ i } />);
+        for(let i = 0; i < noOfAlbums; i++) {
+            r.push(<AlbumRow album={ albums[i] } key={ i } index={ i } />);
         }
 
         noOfAlbums = utils.getFormatted('SONG_COUNT', noOfAlbums);

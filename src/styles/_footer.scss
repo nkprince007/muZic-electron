@@ -21,7 +21,6 @@ $footer-bg : #303F9F;
     float: left;
     height: 100px;
     width: 100px;
-    background-color: $accent-bg;
   }
 
   .footer-controls {
@@ -35,8 +34,10 @@ $footer-bg : #303F9F;
       margin: 0px;
       background-color: transparent;
       z-index: 1000;
+      transition: all 0.2s ease;
 
       .progress-bar {
+        transition: all 0.2s ease;
         background-color: $accent-bg;
       }
     }

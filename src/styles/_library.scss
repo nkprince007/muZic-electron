@@ -1,4 +1,4 @@
-$header-bg : #FFFFFF;
+$header-bg: #FFFFFF;
 $accent-bg: #8BC34A;
 $nav-color: #616161;
 $primary-text: #212121;
@@ -25,13 +25,15 @@ $secondary-text: #757575;
             font-weight: bold;
             font-size: 20px;
             text-transform: uppercase;
-            border-radius: 0px;
+            border-radius: 0;
             transition: 0s;
         }
+
         a:hover {
             background: $header-bg;
             border-bottom: 2px solid $accent-bg;
         }
+
         a.active {
             color: $accent-bg;
             border-bottom: 2px solid $accent-bg;
@@ -58,13 +60,15 @@ $secondary-text: #757575;
                 color: $secondary-text;
                 font-size: 40px;
             }
+
             p.sub-message {
                 font-size: 30px;
-                a {
 
+                a {
                     text-decoration: none;
                     color: $accent-bg;
                 }
+
                 a:hover {
                     cursor: pointer;
                     color: #337ab7;
@@ -84,17 +88,18 @@ $secondary-text: #757575;
         .lib-message {
             position: fixed;
             top: 105px;
-            left: 0%;
+            left: 0;
             width: 100%;
             background-color: white;
             z-index: 1000;
-            box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
             padding: 0 4%;
 
             h1 {
                 color: $primary-text;
                 font-weight: bold;
             }
+
             p {
                 color: $secondary-text;
             }
@@ -108,8 +113,7 @@ $secondary-text: #757575;
 
         .songs-view {
             color: teal;
-            margin: auto;
-            margin-top: 100px;
+            margin: 100px auto auto;
             width: 100%;
 
             * {
@@ -131,27 +135,31 @@ $secondary-text: #757575;
             tbody {
                 font-size: 20px;
                 color: $primary-text;
-                border: 0px;
+                border: 0;
 
                 tr {
                     * {
-                        margin: 0px;
+                        margin: 0;
                         text-overflow: ellipsis;
                         white-space: nowrap;
                         overflow: hidden;
                     }
-                    h3, p {
+
+                    h3,
+                    p {
                         width: 100%;
                     }
+
                     p {
                         text-transform: capitalize;
                         font-size: 15px;
                     }
+
                     td {
                         height: 69px;
-                        border: 0px;
-                        padding: 0px;
-                        margin: 0px;
+                        border: 0;
+                        padding: 0;
+                        margin: 0;
                         padding-top: 13px;
                     }
 
@@ -163,7 +171,7 @@ $secondary-text: #757575;
                         flex-direction: column;
                         justify-content: center;
 
-                        img{
+                        img {
                             content: url('../../dist/img/play.svg');
                             border: 3px solid white;
                             border-radius: 50%;
@@ -171,7 +179,7 @@ $secondary-text: #757575;
                         }
                     }
 
-                    &:hover td:nth-child(1) img{
+                    &:hover td:nth-child(1) img {
                         visibility: visible;
                     }
 
@@ -195,15 +203,18 @@ $secondary-text: #757575;
                     * {
                         color: white;
                     }
+
                     td {
                         background-color: $accent-bg;
                     }
+
                     td:nth-child(1) {
                         img {
                             visibility: visible;
                             border: 3px solid transparent;
                             content: url('../../dist/img/volume_up.svg');
                         }
+
                         img:hover {
                             content: url('../../dist/img/play.svg');
                             border: 3px solid white;
@@ -219,40 +230,58 @@ $secondary-text: #757575;
                     }
                 }
 
-                tr:hover, tr.active:hover {
+                tr.active:hover,
+                tr:hover {
                     background-color: #0288D1;
+
                     * {
                         color: white;
                     }
-                    box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.2);
+                    box-shadow: 0 5px 6px 0 rgba(0,0,0,0.2);
                 }
             }
         }
 
         .album-grid {
-             margin-top: 100px;
+            margin: 100px auto 0;
             transition: all 1s ease;
 
             .album-item {
                 padding: 20px;
-                margin: 20px auto;
                 width: 20%;
                 min-width: 300px;
                 color: $primary-text;
                 display: inline-block;
-                text-align: center;
+                text-align: right;
+                margin: 0 30px;
 
                 img {
-                    background-color: $primary-text;
                     width: 100%;
+                    background-color: $primary-text;
+                    box-shadow: 2px 16px 26px 0 rgba(36, 33, 69, 0.3);
                 }
 
-                p {
-                    margin: 15px;
+                h3 {
+                    text-align: center;
+                    color: #474283;
+                }
+
+                h5 {
+                    text-align: left;
+                    font-size: 20px;
+                }
+
+                span {
+                    display: inline-block;
+                    position: absolute;
+                    top: 67%;
+                    left: 83%;
+                    padding: 4px;
+                    font-size: 20px;
+                    color: $accent-bg;
+                    border: 3px solid $accent-bg;
                 }
             }
-            
         }
     }
-
 }

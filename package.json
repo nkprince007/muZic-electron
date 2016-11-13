@@ -9,7 +9,8 @@
     "serve": "babel-node server.js",
     "start": "ENV=development electron .",
     "dev": "concurrently -k 'babel-node server.js' 'npm start'",
-    "build": "webpack --config webpack.config.production.js && electron-packager . muZic --platform=darwin --arch=all --overwrite"
+    "build:all": "webpack --config webpack.config.production.js && electron-packager . --all",
+    "build:osx": "webpack --config webpack.config.production.js && electron-packager . muZic --platform=darwin --arch=all --overwrite"
   },
   "babel": {
     "presets": [

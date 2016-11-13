@@ -2,22 +2,27 @@ import React from 'react';
 
 class AlbumRow extends React.Component {
     static propTypes = {
-        index: React.PropTypes.number
+        index: React.PropTypes.number,
+        album: React.PropTypes.object
     };
 
+    constructor(props) {
+        super(props);
+        this.cover = 'dist/img/album.svg';
+    }
+
     render() {
-        let str = 'Use securing confined his shutters. ';
-        str += 'Delightful as he it acceptance an solicitude discretion reasonably. ';
-        str += 'Carriage we husbands advanced an perceive greatest. ';
-        str += 'Totally dearest expense on demesne ye he. ';
-        str += 'Curiosity excellent commanded in me. ';
-        str += 'Unpleasing impression themselves to at assistance acceptance my or. ';
-        str += 'On consider laughter civility offended oh.';
+        const album = this.props.album;
+        const title = album.title;
+        const year = album.year;
+        const artists = album.artists.join(', ');
 
         return(
             <div className='album-item'>
-                <img src='dist/img/album.svg' />
-                <p>{ str }</p>
+                <img src={ this.cover } />
+                <span>{year}</span>
+                <h5>{artists}</h5>
+                <h3>{title}</h3>
             </div>
         );
     }
