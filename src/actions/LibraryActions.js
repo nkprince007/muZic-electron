@@ -42,14 +42,10 @@ const loadAlbums = () => {
         else if (albums.length === 0) {
             refreshAlbums();
         } else {
-            let songs = 0;
-            let noAlbums = 0;
-            albums.forEach((album) => {
-                noAlbums++;
-                songs += album.tracks;
-                console.info(album.title);
+            store.dispatch({
+                type: keys.LIBRARY_REFRESH_ALBUMS,
+                albums
             });
-            console.info(`Songs: ${songs}, Albums: ${noAlbums}`);
         }
     });
 };

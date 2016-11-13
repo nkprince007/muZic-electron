@@ -8,6 +8,7 @@ import AppActions from '../actions/AppActions';
 import App from '../components/App.react';
 import Library from '../components/Library/Library.react';
 import Songs from '../components/Library/Songs.react';
+import Albums from '../components/Library/Albums.react';
 
 //Initializer
 const init = {
@@ -28,6 +29,8 @@ const routes = (
         <Route component={ Library } path="library" onEnter={ init.library }>
             <IndexRedirect to="songs" />
             <Route component={ Songs } path="songs" />
+            <Route component={ Albums } path="albums" />
+            <Route component={ Albums } path="artists" />
         </Route>
     </Route>
 );

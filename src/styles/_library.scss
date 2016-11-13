@@ -72,7 +72,7 @@ $secondary-text: #757575;
             }
         }
 
-        .songs-viewbox {
+        .lib-viewbox {
             width: 92%;
             position: fixed;
             top: 105px;
@@ -81,7 +81,7 @@ $secondary-text: #757575;
             overflow: scroll;
         }
 
-        .songs-message {
+        .lib-message {
             position: fixed;
             top: 105px;
             left: 0%;
@@ -227,6 +227,31 @@ $secondary-text: #757575;
                     box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.2);
                 }
             }
+        }
+
+        .album-grid {
+             margin-top: 100px;
+            transition: all 1s ease;
+
+            .album-item {
+                padding: 20px;
+                margin: 20px auto;
+                width: 20%;
+                min-width: 300px;
+                color: $primary-text;
+                display: inline-block;
+                text-align: center;
+
+                img {
+                    background-color: $primary-text;
+                    width: 100%;
+                }
+
+                p {
+                    margin: 15px;
+                }
+            }
+            
         }
     }
 

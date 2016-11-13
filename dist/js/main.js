@@ -1,3 +1,1 @@
-$(document).ready({
-
-});
+const bs = require('./bootstrap.min');

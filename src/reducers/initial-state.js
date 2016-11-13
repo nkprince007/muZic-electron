@@ -10,6 +10,11 @@ export default {
         }
     },
 
+    albums: {
+        all: null,
+        sub: null
+    },
+
     tracksCursor: 'library',  // 'library' or 'playlist'
 
     queue: [],    // Tracks to be played

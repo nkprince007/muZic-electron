@@ -12,6 +12,8 @@ export default keymirror({
     LIBRARY_REFRESH_PROGRESS: null,
     LIBRARY_FETCHED_COVER:    null,
 
+    LIBRARY_REFRESH_ALBUMS: null,
+
     SELECT_AND_PLAY:          null,
     PLAYER_TOGGLE:            null,
     PLAYER_PLAY:              null,

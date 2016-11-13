@@ -17,11 +17,20 @@ export default (state = {}, payload) => {
                 }
             };
         }
-        
+
+        case (keys.LIBRARY_REFRESH_ALBUMS): {
+            return {
+                ...state,
+                albums: {
+                    all: [...payload.albums]
+                }
+            };
+        }
+
         case (keys.REFRESH_CONFIG): {
             return { ...state };
         }
-        
+
         default: {
             return state;
         }

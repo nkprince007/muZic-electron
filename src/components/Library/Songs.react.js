@@ -42,7 +42,7 @@ class Songs extends React.Component {
     }
 
     scrollList() {
-        this.setState({ scrollTop: document.querySelector('.songs-viewbox').scrollTop - this.correction });
+        this.setState({ scrollTop: document.querySelector('.lib-viewbox').scrollTop - this.correction });
     }
 
     render() {
@@ -91,36 +91,16 @@ class Songs extends React.Component {
                 );
             });
 
-        // const list = library.map((track, index) => {
-        //     duration += track.duration;
-        //     const playing = track._id === trackPlayingId;
-
-        //     return (
-        //         <SongRow
-        //             status={ this.props.status }
-        //             track={ track }
-        //             index={ index }
-        //             key={ index }
-        //             trackPlayingId={ trackPlayingId }
-        //             playing={ playing }
-        //         />
-        //     );
-        // });
-
-        // const columns = ['Song', 'Genre', 'Plays'];
         const songCount = utils.getFormatted('SONG_COUNT', rowCount);
         const totalTime = utils.getFormatted('TOTAL_DURATION', duration);
 
-        {/*style={ { height: rowCount * this.rowHeight } } */}
-
-
         return (
-            <div onScroll={ this.scrollList } className="songs-viewbox">
-                <div className="songs-message">
+            <div onScroll={ this.scrollList } className="lib-viewbox">
+                <div className="lib-message">
                     <h1>Songs</h1>
                     <p>{songCount} Songs, {totalTime}</p>
                 </div>
-                <div className="songs-container">
+                <div className="lib-container">
                     <div style={ { height: rowCount * this.rowHeight } }>
                         {trackTiles}
                     </div>
