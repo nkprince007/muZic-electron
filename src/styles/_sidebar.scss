@@ -56,15 +56,15 @@ $divider: #999999;
     padding: 0;
     list-style: none;
     li {
-        padding: 0 20px;
+        padding: 2px 20px;
         line-height: 40px;
+        text-align: right;
         a{
+            display: inline;
             border-radius: 35px;
-            text-align: right;
-            padding-right: 20px;
+            padding: 10px 20px;
             text-transform: lowercase;
             font-size: 18px;
-            display: block;
             color: $secondary-text;
             margin: 5px auto;
         }
@@ -89,6 +89,7 @@ $divider: #999999;
             font-size: 30px;
         }
         a:hover {
+            cursor: default;
             color: $secondary-text;
             background-color: transparent;
         }

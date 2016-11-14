@@ -179,6 +179,22 @@ const searchAlbums = (searchTerm) => {
     });
 };
 
+const reset = () => {
+    store.dispatch({
+        type: keys.LIBRARY_REFRESH_START
+    });
+    app.models.Song.remove({}, { multi: true }, (err) => {
+        if(err) console.warn(err);
+        app.models.Album.remove({}, { multi:true }, (err) => {
+            if(err) console.warn(err);
+            AppActions.library.load();
+            store.dispatch({
+                type: keys.LIBRARY_REFRESH_END
+            });
+        });
+    });
+};
+
 export default {
     load,
     addFolders,
@@ -188,5 +204,6 @@ export default {
     fetchCover,
     selectAndPlay,
     search,
-    searchAlbums
+    searchAlbums,
+    reset
 };

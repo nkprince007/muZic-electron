@@ -10,9 +10,9 @@ export default {
         }
     },
 
-    albums: {
-        all: null,
-        sub: null
+    albums: { // Albums
+        all: null, // All albums
+        sub: null // Filtered albums (e.g. search)
     },
 
     tracksCursor: 'library',  // 'library' or 'playlist'

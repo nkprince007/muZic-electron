@@ -1,0 +1,71 @@
+.settings{
+    position: absolute;
+    width: calc(100% - 250px);
+    p {
+        font-size: 20px;
+    }
+    .settings-header {
+        position: fixed;
+        width: calc(100% - 250px);
+        z-index: 1000;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+        padding: 10px 20px 0px 20px;
+        z-index: 1000;
+        background-color: $body-bg;
+        h1 {
+            font-weight: bold;
+        }
+    }
+    .settings-content {
+        margin: 130px auto auto auto;
+        width: 92%;
+        .settings-section {
+            margin: 10px;
+            text-align: center;
+
+            p, h2 {
+                margin: 0px;
+                padding: 0px;
+                text-align: left;
+            }
+            .folder-list {
+                list-style: none;
+                padding: 0px;
+                margin-top: 20px;
+                text-align: left;
+
+                li {
+                    padding: 10px;
+                    font-size: 20px;
+                    border: 2px solid $accent-bg;
+                    margin-top: 10px;
+                    cursor: default;
+                    span {
+                        color: white;
+                        float: right;
+                        font-size: 30px;
+                        padding: 0px;
+                        margin: 0px;
+                        margin-top: -9px;
+                        visibility: hidden;
+                    }
+                    &:hover {
+                        color: white;
+                        background-color: $accent-bg;
+                        span {
+                            cursor: pointer;
+                            visibility: visible;
+                        }
+                    }
+                }
+            }
+
+            .btn-group {
+                margin-top: 50px;
+                .btn {
+                    outline: none;
+                }
+            }
+        }
+    }
+}

@@ -1,4 +1,16 @@
+$sidebar-bg: #FFFFFF;
+$accent-bg: #8BC34A;
+$primary-text: #212121;
+$secondary-text: #757575;
+$divider: #999999;
 $body-bg: #FFFFFF;
+$header-bg: #FFFFFF;
+$light-prim: #B3E5FC;
+$title-color: #414141;
+$close-btn-color: rgb(255, 74, 59);
+$minimize-btn-color: rgb(251, 210, 0);
+$maximize-btn-color: rgb(0, 231, 67);
+
 @font-face {
   font-family: 'Product Sans';
   src: url('../../dist/fonts/ps_reg.ttf');
@@ -71,6 +83,13 @@ body {
   background-color: $body-bg;
 }
 
+h1,h2,h3,h4,h5,h6 {
+  color: $primary-text;
+}
+p, span, a {
+  color: $secondary-text;
+}
+
 #react-content,
 body,
 html {
@@ -80,7 +99,6 @@ html {
   * {
     user-select: none;
     -webkit-user-select: none;
-    cursor: default;
   }
 }
 
@@ -101,3 +119,4 @@ html {
 @import '_header.scss';
 @import '_library.scss';
 @import '_sidebar.scss';
+@import '_settings.scss';

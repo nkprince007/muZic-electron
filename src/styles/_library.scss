@@ -1,11 +1,7 @@
-$header-bg: #FFFFFF;
-$accent-bg: #8BC34A;
-$nav-color: #616161;
-$primary-text: #212121;
-$secondary-text: #757575;
 .library {
     width: 100%;
     * {
+        cursor: default;
         -webkit-app-region: no-drag;
     }
     .library-content {
@@ -41,7 +37,7 @@ $secondary-text: #757575;
         .lib-viewbox {
             width: calc(94% - 250px);
             position: fixed;
-            top: 55px;
+            top: 80px;
             bottom: 100px;
             left: calc(3% + 250px);
             overflow: scroll;
@@ -54,7 +50,7 @@ $secondary-text: #757575;
             background-color: white;
             z-index: 1000;
             box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
-            padding: 0 4%;
+            padding: 10px 20px 0px 20px;
             h1 {
                 color: $primary-text;
                 font-weight: bold;
@@ -64,6 +60,9 @@ $secondary-text: #757575;
                 font-size: 18px;
             }
             .search {
+                * {
+                    cursor: pointer;
+                }
                 background-color: $light-prim;
                 position: absolute;
                 top: 50px;

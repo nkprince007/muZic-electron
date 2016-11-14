@@ -9,7 +9,6 @@ import app from '../lib/app';
 import Header from './Header/Header.react';
 import Footer from './Footer/Footer.react';
 
-// console.log(store.refreshProgress);
 
 class App extends React.Component {
     static propTypes = {
@@ -37,7 +36,7 @@ class App extends React.Component {
 
                         <li className="sidebar-brand"><a href="#">Settings</a></li>
                         <li><hr /></li>
-                        <li><a href="#">Library</a></li>
+                        <li><Link activeClassName="active" to='settings/library/'>Library</Link></li>
                         <li><a href="#">Playback</a></li>
                         <li><a href="#">User Interface</a></li>
                         <li><a href="#">Advanced</a></li>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import AppActions from '../../actions/AppActions';
 
@@ -40,7 +41,7 @@ class Library extends React.Component {
                   <p>Too bad, there is no music in your library =(</p>
                   <p className='sub-message'>
                     <span>nothing found yet, but that&apos;s fine, you can always </span>
-                    <a onClick={ this.addMusic }>add your music here</a>
+                    <Link to="settings/library">add your music here</Link>
                   </p>
                 </div>
             );
