@@ -126,10 +126,10 @@ export default (state = {}, payload) => {
                 return newState;
             }
 
-            const search = utils.stripChars(payload.searchTerm);
+            const search = utils.stripChars(payload.searchTerm.toLowerCase());
 
             const allCurrentTracks = state.tracks[state.tracksCursor].all;
-            const tracks = [].concat(allCurrentTracks).filter(track => {
+            const tracks = [].concat(allCurrentTracks).filter((track) => {
                 return track.loweredMetas.artist.join(', ').includes(search)
                     || track.loweredMetas.album.includes(search)
                     || track.loweredMetas.genre.join(', ').includes(search)
@@ -138,7 +138,24 @@ export default (state = {}, payload) => {
 
             const newState = { ...state };
             newState.tracks[state.tracksCursor].sub = tracks;
-            console.log(tracks.map((track) => track.title));
+            return newState;
+        }
+        case (keys.FILTER_SEARCH_ALBUMS): {
+            const newState = { ...state };
+
+            if(!payload.searchTerm) {
+                newState.albums.sub = [...state.albums.all];
+                return newState;
+            }
+
+            const search = utils.stripChars(payload.searchTerm.toLowerCase());
+
+            const allAlbums = state.albums.all;
+            const albums = [].concat(allAlbums).filter((album) => {
+                return album.title.includes(search);
+            });
+
+            newState.albums.sub = albums;
             return newState;
         }
         default: {

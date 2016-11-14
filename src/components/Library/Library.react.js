@@ -9,7 +9,8 @@ class Library extends React.Component {
         trackPlayingId: React.PropTypes.string,
         status: React.PropTypes.string,
         albums: React.PropTypes.array,
-        filteredTracks: React.PropTypes.array
+        filteredTracks: React.PropTypes.array,
+        filteredAlbums: React.PropTypes.array
     };
 
     constructor(props) {
@@ -22,7 +23,7 @@ class Library extends React.Component {
         this.child = this.props.children.type.name;
         this.library = this.props.library;
         if (this.child === 'Albums') {
-            this.library = this.props.albums;
+            this.library = this.props.filteredAlbums || this.props.albums;
         }
 
         if (this.props.library === null) {
