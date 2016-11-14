@@ -25,14 +25,11 @@ class Albums extends React.Component {
 
         let noOfAlbums = albums.length;
         let noOfSongs = 0;
+        const r = [];
         albums.forEach((album) => {
             noOfSongs += album.tracks;
+            r.push(<AlbumRow album={ album } key={ album.title } />);
         });
-
-        const r = [];
-        for(let i = 0; i < noOfAlbums; i++) {
-            r.push(<AlbumRow album={ albums[i] } key={ i } index={ i } />);
-        }
 
         noOfAlbums = utils.getFormatted('SONG_COUNT', noOfAlbums);
         noOfSongs = utils.getFormatted('SONG_COUNT', noOfSongs);

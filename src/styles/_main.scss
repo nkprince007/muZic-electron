@@ -1,5 +1,4 @@
 $body-bg: #FFFFFF;
-
 @font-face {
   font-family: 'Product Sans';
   src: url('../../dist/fonts/ps_reg.ttf');
@@ -72,11 +71,14 @@ body {
   background-color: $body-bg;
 }
 
-#react-content, body, html {
+#react-content,
+body,
+html {
   margin: 0px;
   width: 100%;
   height: 100%;
   * {
+    user-select: none;
     -webkit-user-select: none;
     cursor: default;
   }

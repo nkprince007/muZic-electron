@@ -2,7 +2,6 @@ import React from 'react';
 
 class AlbumRow extends React.Component {
     static propTypes = {
-        index: React.PropTypes.number,
         album: React.PropTypes.object
     };
 
@@ -20,8 +19,8 @@ class AlbumRow extends React.Component {
         return(
             <div className='album-item'>
                 <img src={ this.cover } />
-                <span>{year}</span>
                 <h5>{artists}</h5>
+                <span>{ year }</span>
                 <h3>{title}</h3>
             </div>
         );

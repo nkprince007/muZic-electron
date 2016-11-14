@@ -81,7 +81,7 @@ const refreshAlbums = () => {
             _.forIn(albums, (songsList, key) => {
                 const album = {
                     title: key,
-                    year: '0000', //for now, we'll think about it later
+                    year: _.last(_.union(songsList.map((song) => song.year))),
                     tracks: songsList.length,
                     cover: _.union(songsList.map((song) => song.cover)),
                     artists: _.union(_.flatten(songsList.map((song) => song.albumartist))),
@@ -92,7 +92,6 @@ const refreshAlbums = () => {
             });
         }
     });
-    loadAlbums();
 };
 
 const refresh = () => {
@@ -141,7 +140,7 @@ const refresh = () => {
             addedFiles++;
         }, { concurrent: fsConcurrency }))
         .then(() => {
-            refreshAlbums();
+            loadAlbums();
             AppActions.library.load();
             store.dispatch({
                 type: keys.LIBRARY_REFRESH_END
@@ -171,6 +170,7 @@ export default {
     addFolders,
     removeFolder,
     refresh,
+    refreshAlbums,
     fetchCover,
     selectAndPlay
 };

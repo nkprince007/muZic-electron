@@ -1,11 +1,9 @@
-$header-bg : #FFFFFF;
+$header-bg: #FFFFFF;
 $light-prim: #B3E5FC;
 $title-color: #414141;
-
-$close-btn-color: rgb(255,74,59);
-$minimize-btn-color: rgb(251,210,0);
+$close-btn-color: rgb(255, 74, 59);
+$minimize-btn-color: rgb(251, 210, 0);
 $maximize-btn-color: rgb(0, 231, 67);
-
 .header {
     background-color: $header-bg;
     padding: 0px;
@@ -16,28 +14,25 @@ $maximize-btn-color: rgb(0, 231, 67);
     width: 100%;
     z-index: 1000;
     height: fit-content;
-
     &:hover {
-      cursor: default;
+        cursor: default;
     }
-
     .title {
-      color: $title-color;
-      width: 100%;
-      font-size: 40px;
-      font-family: 'Product Sans';
-      font-weight: bolder;
-      text-align: center;
-      margin: 0px;
-
-      &:hover {
-        color: #212121;
-      }
+        color: $title-color;
+        width: 100%;
+        font-size: 40px;
+        font-family: 'Product Sans';
+        font-weight: bolder;
+        text-align: center;
+        margin: 0px;
+        &:hover {
+            color: #212121;
+        }
     }
 }
 
 .window-controls {
-  width: 100%;
+    width: 100%;
 }
 
 .window-control-buttons {
@@ -49,7 +44,6 @@ $maximize-btn-color: rgb(0, 231, 67);
     display: inline-block;
     position: absolute;
     -webkit-app-region: no-drag;
-
     li {
         margin: 0px;
         margin-left: 3px;
@@ -58,15 +52,12 @@ $maximize-btn-color: rgb(0, 231, 67);
         display: inline-block;
         padding: 7px;
     }
-
     li:nth-child(1) {
         background-color: $close-btn-color;
     }
-
     li:nth-child(2) {
         background-color: $minimize-btn-color;
     }
-
     li:nth-child(3) {
         background-color: $maximize-btn-color;
     }
