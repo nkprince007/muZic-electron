@@ -11,7 +11,7 @@ What does it use?
 - [**electron**][2] for Chromium Browser
 - [**React.js**][3] for the front-end
 - [**Redux**][4] as data-flow pattern
-- [**SCSS**][5] for design and styling
+- [**masonry**][5], [**jQuery**][8] and [**twitter-bs**][7] for design and styling
 
 
 Developer Notes
@@ -31,5 +31,7 @@ Any one who'd like to collaborate, feel free to mail me at <mailto:nkprince007@g
 [2]: http://electron.atom.io/
 [3]: http://facebook.github.io/react/
 [4]: http://redux.js.org/
-[5]: http://sass-lang.com/
+[5]: http://masonry.desandro.com/
 [6]: http://fb.com/naveen.007.prince/
+[7]: http://getbootstrap.com/
+[8]: http://jquery.com/
