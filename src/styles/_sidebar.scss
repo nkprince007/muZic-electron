@@ -31,7 +31,7 @@ $divider: #999999;
     width: 0;
     height: calc(100% - 159px);
     margin-left: -250px;
-    overflow-y: hidden;
+    overflow-y: auto;
     background: $sidebar-bg;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -59,12 +59,14 @@ $divider: #999999;
         padding: 0 20px;
         line-height: 40px;
         a{
+            border-radius: 35px;
             text-align: right;
             padding-right: 20px;
             text-transform: lowercase;
             font-size: 18px;
             display: block;
             color: $secondary-text;
+            margin-top: 3px;
         }
         a:hover, a.active {
             color: white;

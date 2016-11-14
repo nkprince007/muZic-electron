@@ -29,8 +29,8 @@ class App extends React.Component {
                     <ul className="sidebar-nav">
                         <li className="sidebar-brand"><a href="#">Library</a></li>
                         <li><hr /></li>
-                        <li><Link to='library/songs/'>Songs</Link></li>
-                        <li><Link to='library/albums/'>Albums</Link></li>
+                        <li><Link activeClassName="active" to='library/songs/'>Songs</Link></li>
+                        <li><Link activeClassName="active" to='library/albums/'>Albums</Link></li>
                         <li><a href="#">Artists</a></li>
                         <li><a href="#">Playlists</a></li>
                         <li><a href="#">Genres</a></li>

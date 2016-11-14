@@ -63,6 +63,24 @@ $secondary-text: #757575;
                 color: $secondary-text;
                 font-size: 18px;
             }
+            .search {
+                background-color: $light-prim;
+                position: absolute;
+                top: 50px;
+                right: 300px;
+                border-radius: 35px;
+                overflow: hidden;
+                input[type="text"] {
+                    margin: 5px 15px;
+                    background: transparent;
+                    border: none;
+                    text-decoration: none;
+                    outline: none;
+                }
+                img {
+                    padding: 5px 15px;
+                }
+            }
         }
         .songs-table {
             position: absolute;

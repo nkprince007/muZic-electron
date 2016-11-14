@@ -98,6 +98,10 @@ class Songs extends React.Component {
             <div onScroll={ this.scrollList } className="lib-viewbox">
                 <div className="lib-message">
                     <h1>Songs</h1>
+                    <div className="search">
+                        <input type="text" placeholder="Search..." />
+                        <img src="dist/img/magnifier.svg" />
+                    </div>
                     <p>{songCount} Songs, {totalTime}</p>
                 </div>
                 <div className="lib-container">
