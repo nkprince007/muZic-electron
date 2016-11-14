@@ -16,7 +16,7 @@ $secondary-text: #757575;
             position: absolute;
             top: 100px;
             bottom: 100px;
-            width: 100%;
+            width: calc(100% - 250px);
             text-align: center;
             display: flex;
             flex-direction: column;

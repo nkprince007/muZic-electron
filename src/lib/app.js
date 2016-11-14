@@ -74,7 +74,14 @@ const Song = new linvodb('song', {
         no: Number,
         of: Number
     },
-    year: String
+    year: String,
+    loweredMetas: {
+        artist: [String],
+        album: String,
+        genre: [String],
+        title: String,
+        albumartist: [String]
+    }
 });
 
 const Album = new linvodb('album', {

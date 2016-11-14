@@ -53,7 +53,7 @@ class App extends React.Component {
                                 refreshProgress: store.refreshProgress,
                                 queue: store.queue,
                                 playlists: store.playlists,
-                                tracks: store.tracks[store.tracksCursor].sub,
+                                filteredTracks: store.tracks[store.tracksCursor].sub,
                                 library: store.tracks[store.tracksCursor].all,
                                 albums: store.albums.all,
                                 trackPlayingId,

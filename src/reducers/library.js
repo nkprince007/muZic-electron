@@ -119,6 +119,28 @@ export default (state = {}, payload) => {
                 refreshProgress: payload.percentage
             };
         }
+        case (keys.FILTER_SEARCH_SONGS): {
+            if(!payload.searchTerm) {
+                const newState = { ...state };
+                newState.tracks[state.tracksCursor].sub = [...state.tracks[state.tracksCursor].all];
+                return newState;
+            }
+
+            const search = utils.stripChars(payload.searchTerm);
+
+            const allCurrentTracks = state.tracks[state.tracksCursor].all;
+            const tracks = [].concat(allCurrentTracks).filter(track => {
+                return track.loweredMetas.artist.join(', ').includes(search)
+                    || track.loweredMetas.album.includes(search)
+                    || track.loweredMetas.genre.join(', ').includes(search)
+                    || track.loweredMetas.title.includes(search);
+            });
+
+            const newState = { ...state };
+            newState.tracks[state.tracksCursor].sub = tracks;
+            console.log(tracks.map((track) => track.title));
+            return newState;
+        }
         default: {
             return state;
         }

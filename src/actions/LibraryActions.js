@@ -165,6 +165,13 @@ const selectAndPlay = (trackId) => {
     });
 };
 
+const search = (searchTerm) => {
+    store.dispatch({
+        type: keys.FILTER_SEARCH_SONGS,
+        searchTerm
+    });
+};
+
 export default {
     load,
     addFolders,
@@ -172,5 +179,6 @@ export default {
     refresh,
     refreshAlbums,
     fetchCover,
-    selectAndPlay
+    selectAndPlay,
+    search
 };

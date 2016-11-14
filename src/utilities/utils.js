@@ -46,6 +46,15 @@ const utils = {
         return chunks;
     },
 
+    stripChars: (str) => {
+        const accents = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
+        const fixes = 'AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz';
+        const split = accents.split('').join('|');
+        const reg = new RegExp(`(${split})`, 'g');
+
+        return str.replace(reg, (a) => fixes[accents.indexOf(a) || '' ]);
+    },
+
     getMetadata: (track, callback) => {
         const stream = fs.createReadStream(track);
         mmd(stream, { duration: true }, (err, data) => {
@@ -67,6 +76,14 @@ const utils = {
                 path: track,
                 playCount: 0,
                 duration: data.duration
+            };
+
+            metadata.loweredMetas = {
+                artist: metadata.artist.map((meta) => utils.stripChars(meta.toLowerCase())),
+                album: utils.stripChars(metadata.album.toLowerCase()),
+                albumartist: metadata.albumartist.map((meta) => utils.stripChars(meta.toLowerCase())),
+                title: utils.stripChars(metadata.title.toLowerCase()),
+                genre: metadata.genre.map((meta) => utils.stripChars(meta.toLowerCase()))
             };
 
             if (metadata.duration === 0) {

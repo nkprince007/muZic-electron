@@ -4,12 +4,14 @@ import _ from 'lodash';
 import utils from '../../utilities/utils';
 
 import SongRow from './SongRow.react';
+import AppActions from '../../actions/AppActions';
 
 class Songs extends React.Component {
     static propTypes = {
         library: React.PropTypes.array,
         trackPlayingId: React.PropTypes.string,
-        status: React.PropTypes.string
+        status: React.PropTypes.string,
+        filteredTracks: React.PropTypes.array
     }
 
     constructor(props) {
@@ -21,6 +23,7 @@ class Songs extends React.Component {
 
         this.getHeader = this.getHeader.bind(this);
         this.scrollList = this.scrollList.bind(this);
+        this.search = this.search.bind(this);
 
         this.rowHeight = 69;
         this.correction = 0;
@@ -46,7 +49,7 @@ class Songs extends React.Component {
     }
 
     render() {
-        const library = this.props.library;
+        const library = this.props.filteredTracks || this.props.library;
         const trackPlayingId = this.props.trackPlayingId;
 
         const chunkLength = 20;
@@ -99,10 +102,10 @@ class Songs extends React.Component {
                 <div className="lib-message">
                     <h1>Songs</h1>
                     <div className="search">
-                        <input type="text" placeholder="Search..." />
+                        <input onChange={ this.search } type="text" placeholder="Search..." />
                         <img src="dist/img/magnifier.svg" />
                     </div>
-                    <p>{songCount} Songs, {totalTime}</p>
+                    <p>{songCount} Songs . {totalTime}</p>
                 </div>
                 <div className="lib-container">
                     <div style={ { height: rowCount * this.rowHeight } }>
@@ -111,6 +114,10 @@ class Songs extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    search(e) {
+        AppActions.library.search(e.target.value);
     }
 
 }

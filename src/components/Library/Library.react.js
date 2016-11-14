@@ -8,7 +8,8 @@ class Library extends React.Component {
         children: React.PropTypes.object,
         trackPlayingId: React.PropTypes.string,
         status: React.PropTypes.string,
-        albums: React.PropTypes.array
+        albums: React.PropTypes.array,
+        filteredTracks: React.PropTypes.array
     };
 
     constructor(props) {
@@ -47,7 +48,8 @@ class Library extends React.Component {
         return React.cloneElement(this.props.children, {
             library: this.library,
             trackPlayingId: this.props.trackPlayingId,
-            status: this.props.status
+            status: this.props.status,
+            filteredTracks: this.props.filteredTracks
         });
     }
 

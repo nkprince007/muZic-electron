@@ -21,4 +21,6 @@ export default keymirror({
     PLAYER_STOP:              null,
     PLAYER_PREVIOUS:          null,
     PLAYER_NEXT:              null,
+
+    FILTER_SEARCH_SONGS:      null
 });
