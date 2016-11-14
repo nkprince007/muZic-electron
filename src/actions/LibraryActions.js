@@ -172,6 +172,13 @@ const search = (searchTerm) => {
     });
 };
 
+const searchAlbums = (searchTerm) => {
+    store.dispatch({
+        type: keys.FILTER_SEARCH_ALBUMS,
+        searchTerm
+    });
+};
+
 export default {
     load,
     addFolders,
@@ -180,5 +187,6 @@ export default {
     refreshAlbums,
     fetchCover,
     selectAndPlay,
-    search
+    search,
+    searchAlbums
 };

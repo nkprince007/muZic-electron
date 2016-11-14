@@ -22,5 +22,6 @@ export default keymirror({
     PLAYER_PREVIOUS:          null,
     PLAYER_NEXT:              null,
 
-    FILTER_SEARCH_SONGS:      null
+    FILTER_SEARCH_SONGS:      null,
+    FILTER_SEARCH_ALBUMS:      null
 });

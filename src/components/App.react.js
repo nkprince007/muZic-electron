@@ -56,6 +56,7 @@ class App extends React.Component {
                                 filteredTracks: store.tracks[store.tracksCursor].sub,
                                 library: store.tracks[store.tracksCursor].all,
                                 albums: store.albums.all,
+                                filteredAlbums: store.albums.sub,
                                 trackPlayingId,
                                 status: store.playerStatus
                             })
