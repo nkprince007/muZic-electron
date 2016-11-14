@@ -59,13 +59,17 @@ export default class PlayerControls extends React.Component {
         }
 
         let cover = 'dist/img/album.svg';
+        let classNames = 'album-img';
         if (this.props.cover !== null && this.props.cover !== '' && this.props.cover !== undefined) {
             cover = this.props.cover;
+        } else {
+            classNames = 'add-padding album-img';
         }
+
         return (
             <div className="footer-base">
                 <img
-                    className="album-img"
+                    className={ classNames }
                     alt=''
                     src={ cover }
                 />

@@ -1,0 +1,122 @@
+$sidebar-bg: #FFFFFF;
+$accent-bg: #8BC34A;
+$primary-text: #212121;
+$secondary-text: #757575;
+$divider: #999999;
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+    #sidebar-wrapper {
+        width: 250px;
+    }
+    #page-content-wrapper {
+        position: absolute;
+        margin-right: -250px;
+    }
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    top: 59px;
+    width: 0;
+    height: calc(100% - 159px);
+    margin-left: -250px;
+    overflow-y: hidden;
+    background: $sidebar-bg;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border-right: 1px solid $light-prim;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+        padding: 0 20px;
+        line-height: 40px;
+        a{
+            text-align: right;
+            padding-right: 20px;
+            text-transform: lowercase;
+            font-size: 18px;
+            display: block;
+            color: $secondary-text;
+        }
+        a:hover, a.active {
+            color: white;
+            background-color: $accent-bg;
+        }
+        a, a:active, a:focus, a:hover {
+            text-decoration: none
+        }
+        hr {
+            border-top-color: $divider;
+            border-top-width: 2px;
+            width: 80%;
+            margin: 0 0 5% 20%;
+        }
+    }
+    .sidebar-brand {
+        padding-top: 40px;
+        a {
+            text-transform: lowercase;
+            font-size: 30px;
+        }
+        a:hover {
+            color: $secondary-text;
+            background-color: transparent;
+        }
+    }
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}

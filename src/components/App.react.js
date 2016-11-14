@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 //Libraries
 import app from '../lib/app';
@@ -24,22 +25,42 @@ class App extends React.Component {
         return (
             <div>
                 <Header windowControls={ !{ ...app.config.getAll() }.useNativeFrame } />
-                <div className='main-content'>
-                    { React.cloneElement(
-                        this.props.children, {
-                            app: this,
-                            config: { ...app.config.getAll() },
-                            refreshingLibrary: store.refreshingLibrary,
-                            refreshProgress: store.refreshProgress,
-                            queue: store.queue,
-                            playlists: store.playlists,
-                            tracks: store.tracks[store.tracksCursor].sub,
-                            library: store.tracks[store.tracksCursor].all,
-                            albums: store.albums.all,
-                            trackPlayingId,
-                            status: store.playerStatus
-                        })
-                    }
+                <div id="sidebar-wrapper">
+                    <ul className="sidebar-nav">
+                        <li className="sidebar-brand"><a href="#">Library</a></li>
+                        <li><hr /></li>
+                        <li><Link to='library/songs/'>Songs</Link></li>
+                        <li><Link to='library/albums/'>Albums</Link></li>
+                        <li><a href="#">Artists</a></li>
+                        <li><a href="#">Playlists</a></li>
+                        <li><a href="#">Genres</a></li>
+
+                        <li className="sidebar-brand"><a href="#">Settings</a></li>
+                        <li><hr /></li>
+                        <li><a href="#">Library</a></li>
+                        <li><a href="#">Playback</a></li>
+                        <li><a href="#">User Interface</a></li>
+                        <li><a href="#">Advanced</a></li>
+                    </ul>
+                </div>
+                <div id="page-content-wrapper">
+                    <div className='main-content'>
+                        { React.cloneElement(
+                            this.props.children, {
+                                app: this,
+                                config: { ...app.config.getAll() },
+                                refreshingLibrary: store.refreshingLibrary,
+                                refreshProgress: store.refreshProgress,
+                                queue: store.queue,
+                                playlists: store.playlists,
+                                tracks: store.tracks[store.tracksCursor].sub,
+                                library: store.tracks[store.tracksCursor].all,
+                                albums: store.albums.all,
+                                trackPlayingId,
+                                status: store.playerStatus
+                            })
+                        }
+                    </div>
                 </div>
                 <Footer
                     app={ this }

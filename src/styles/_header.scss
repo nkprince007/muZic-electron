@@ -14,6 +14,7 @@ $maximize-btn-color: rgb(0, 231, 67);
     width: 100%;
     z-index: 1000;
     height: fit-content;
+    border-bottom: 2px solid $light-prim;
     &:hover {
         cursor: default;
     }
