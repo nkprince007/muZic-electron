@@ -10,7 +10,6 @@ $title-color: #414141;
 $close-btn-color: rgb(255, 74, 59);
 $minimize-btn-color: rgb(251, 210, 0);
 $maximize-btn-color: rgb(0, 231, 67);
-
 @font-face {
   font-family: 'Product Sans';
   src: url('../../dist/fonts/ps_reg.ttf');
@@ -83,10 +82,18 @@ body {
   background-color: $body-bg;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: $primary-text;
 }
-p, span, a {
+
+p,
+span,
+a {
   color: $secondary-text;
 }
 

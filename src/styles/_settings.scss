@@ -1,4 +1,4 @@
-.settings{
+.settings {
     position: absolute;
     width: calc(100% - 250px);
     p {
@@ -22,8 +22,8 @@
         .settings-section {
             margin: 10px;
             text-align: center;
-
-            p, h2 {
+            p,
+            h2 {
                 margin: 0px;
                 padding: 0px;
                 text-align: left;
@@ -33,7 +33,6 @@
                 padding: 0px;
                 margin-top: 20px;
                 text-align: left;
-
                 li {
                     padding: 10px;
                     font-size: 20px;
@@ -59,7 +58,6 @@
                     }
                 }
             }
-
             .btn-group {
                 margin-top: 50px;
                 .btn {

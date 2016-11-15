@@ -9,6 +9,7 @@ import App from '../components/App.react';
 import Library from '../components/Library/Library.react';
 import Songs from '../components/Library/Songs.react';
 import Albums from '../components/Library/Albums.react';
+import AlbumDetailed from '../components/Library/AlbumDetailed.react';
 import Settings from '../components/Settings/Settings.react';
 import SettingsLibrary from '../components/Settings/SettingsLibrary.react';
 
@@ -27,7 +28,7 @@ const routes = (
             <IndexRedirect to="songs" />
             <Route component={ Songs } path="songs" />
             <Route component={ Albums } path="albums" />
-            <Route component={ Albums } path="artists" />
+            <Route component={ AlbumDetailed } path="albums/:albumId" />
         </Route>
         <Route component={ Settings } path="settings">
             <IndexRedirect to="library" />

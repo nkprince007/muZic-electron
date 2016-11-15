@@ -1,4 +1,6 @@
 import React from 'react';
+import path from 'path';
+import { Link } from 'react-router';
 
 class AlbumRow extends React.Component {
     static propTypes = {
@@ -15,14 +17,17 @@ class AlbumRow extends React.Component {
         const title = album.title;
         const year = album.year;
         const artists = album.artists.join(', ');
+        const albumLink = path.join('library', 'albums', album._id);
 
         return(
-            <div className='album-item'>
-                <img src={ this.cover } />
-                <h5>{artists}</h5>
-                <span>{ year }</span>
-                <h3>{title}</h3>
-            </div>
+            <Link to={ albumLink }>
+                <div className='album-item'>
+                    <img src={ this.cover } />
+                    <h5>{artists}</h5>
+                    <span>{ year }</span>
+                    <h3>{title}</h3>
+                </div>
+            </Link>
         );
     }
 }

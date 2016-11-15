@@ -11,7 +11,7 @@ class Settings extends React.Component {
             <div className="settings">
                 <div className="settings-header">
                     <h1 className="title">Settings</h1>
-                    <p>tweak your stuff, in a way that pleases you...</p>
+                    <p>tweak <b>your</b> stuff, in a way that pleases <b>you</b>...</p>
                 </div>
                 <div className="settings-content">
                     {

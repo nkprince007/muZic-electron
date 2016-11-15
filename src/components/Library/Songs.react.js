@@ -105,7 +105,7 @@ class Songs extends React.Component {
                         <input onChange={ this.search } type="text" placeholder="Search..." />
                         <img src="dist/img/magnifier.svg" />
                     </div>
-                    <p>{songCount} Songs . {totalTime}</p>
+                    <p><b>{songCount}</b> Songs . <b>{totalTime}</b></p>
                 </div>
                 <div className="lib-container">
                     <div style={ { height: rowCount * this.rowHeight } }>
