@@ -3,7 +3,8 @@ import React from 'react';
 class Settings extends React.Component {
     static propTypes = {
         children: React.PropTypes.object,
-        config: React.PropTypes.object
+        config: React.PropTypes.object,
+        refreshProgress: React.PropTypes.number
     };
 
     render() {
@@ -16,7 +17,8 @@ class Settings extends React.Component {
                 <div className="settings-content">
                     {
                         React.cloneElement(this.props.children, {
-                            config: this.props.config
+                            config: this.props.config,
+                            refreshProgress: this.props.refreshProgress
                         })
                     }
                 </div>

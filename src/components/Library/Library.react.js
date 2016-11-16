@@ -11,7 +11,8 @@ class Library extends React.Component {
         status: React.PropTypes.string,
         albums: React.PropTypes.array,
         filteredTracks: React.PropTypes.array,
-        filteredAlbums: React.PropTypes.array
+        filteredAlbums: React.PropTypes.array,
+        refreshProgress: React.PropTypes.number
     };
 
     constructor(props) {
@@ -29,7 +30,7 @@ class Library extends React.Component {
             this.library = this.props.albums;
         }
 
-        if (this.props.library === null) {
+        if (this.props.library === null || this.props.refreshProgress !== 0) {
             return (
                 <div className='library-empty'>
                   <p>Loading library...</p>

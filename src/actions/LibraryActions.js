@@ -136,7 +136,10 @@ const refresh = () => {
         }).then((song) => app.models.Song.insertAsync(song))
         .then(() => {
             const percent = parseInt((addedFiles * 100) / totalFiles, 10);
-            console.info(`Progress: ${percent}`);
+            store.dispatch({
+                type: keys.LIBRARY_REFRESH_PROGRESS,
+                percent
+            });
             addedFiles++;
         }, { concurrent: fsConcurrency }))
         .then(() => {

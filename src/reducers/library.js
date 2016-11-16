@@ -118,7 +118,7 @@ export default (state = {}, payload) => {
         case (keys.LIBRARY_REFRESH_PROGRESS): {
             return {
                 ...state,
-                refreshProgress: payload.percentage
+                refreshProgress: payload.percent
             };
         }
         case (keys.FILTER_SEARCH_SONGS): {

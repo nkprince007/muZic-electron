@@ -1,11 +1,13 @@
 import React from 'react';
-import { ButtonGroup, Button } from 'react-bootstrap';
+import classnames from 'classnames';
+import { ProgressBar, ButtonGroup, Button } from 'react-bootstrap';
 
 import AppActions from '../../actions/AppActions';
 
 class SettingsLibrary extends React.Component {
     static propTypes = {
-        config: React.PropTypes.object
+        config: React.PropTypes.object,
+        refreshProgress: React.PropTypes.number
     };
 
     constructor(props) {
@@ -42,6 +44,8 @@ class SettingsLibrary extends React.Component {
         musicFolders.forEach((folder, i) => {
             liMusicFolders.push(<li key={ i } >{ folder }<span data-id={ i } onClick={ this.removeFolder }>&times;</span></li>);
         });
+        const now = this.props.refreshProgress;
+        const classes = classnames({ hidden: now === 0 });
 
         return (
             <div className="settings-section">
@@ -55,6 +59,9 @@ class SettingsLibrary extends React.Component {
                     <Button onClick={ this.refreshLibrary }>Refresh Library</Button>
                     <Button onClick={ this.resetLibrary }>Reset Library</Button>
                 </ButtonGroup>
+                <div className="progress-bar-container">
+                    <ProgressBar className={ classes } label={ `${now}%` } now={ this.props.refreshProgress } />
+                </div>
             </div>
         );
     }
