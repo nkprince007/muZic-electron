@@ -25,6 +25,8 @@ class Library extends React.Component {
         this.library = this.props.library;
         if (this.child === 'Albums') {
             this.library = this.props.filteredAlbums || this.props.albums;
+        } else if (this.child === 'AlbumDetailed') {
+            this.library = this.props.albums;
         }
 
         if (this.props.library === null) {
