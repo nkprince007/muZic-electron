@@ -37,7 +37,7 @@ class Songs extends React.Component {
         const trackPlayingId = this.props.trackPlayingId;
 
         const chunkLength = 20;
-        const tilesToDisplay = 5;
+        const tilesToDisplay = 2;
         const tileHeight = this.rowHeight * chunkLength;
 
         const tracksChunked = utils.chunkArray(library, chunkLength);
