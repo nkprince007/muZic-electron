@@ -21,27 +21,11 @@ class Songs extends React.Component {
             scrollTop: 0
         };
 
-        this.getHeader = this.getHeader.bind(this);
         this.scrollList = this.scrollList.bind(this);
         this.search = this.search.bind(this);
 
         this.rowHeight = 69;
         this.correction = 0;
-    }
-
-    getHeader(columns = []) {
-        const headers = [];
-        columns.forEach((col, i) => {
-            headers.push(<th key={ i }>{col}</th>);
-        });
-        return (
-           <thead>
-               <tr>
-                   <th>&nbsp;</th>
-                   {headers}
-               </tr>
-           </thead>
-        );
     }
 
     scrollList() {
@@ -105,7 +89,7 @@ class Songs extends React.Component {
                         <input onChange={ this.search } type="text" placeholder="Search..." />
                         <img src="dist/img/magnifier.svg" />
                     </div>
-                    <p><b>{songCount}</b> Songs . <b>{totalTime}</b></p>
+                    <p><b>{songCount}</b> Songs &#x25cf; <b>{totalTime}</b></p>
                 </div>
                 <div className="lib-container">
                     <div style={ { height: rowCount * this.rowHeight } }>

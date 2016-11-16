@@ -58,7 +58,7 @@ class Albums extends React.Component {
                         <input onChange={ this.search } type="text" placeholder="Search..." />
                         <img src="dist/img/magnifier.svg" />
                     </div>
-                    <p><b>{ noOfAlbums }</b> Albums ․ <b>{ noOfSongs }</b> Songs</p>
+                    <p><b>{ noOfAlbums }</b> Albums &#x25cf; <b>{ noOfSongs }</b> Songs</p>
                 </div>
                 <div className="lib-container album-grid">
                     { r }

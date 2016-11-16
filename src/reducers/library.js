@@ -19,6 +19,8 @@ export default (state = {}, payload) => {
                     break;
                 }
             }
+            // needs fixing here for album songs playback and sync
+            // console.log(`queuePosition: ${queuePosition}, queueCursor: ${queueCursor}, queue: ${queue}`);
 
             if (queuePosition !== null) {
                 const uri = utils.parseUri(queue[queuePosition].path);

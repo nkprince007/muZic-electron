@@ -1,9 +1,14 @@
 import React from 'react';
+import utils from '../../utilities/utils';
+import SongRow from './SongRow.react';
+// import AppActions from '../../actions/AppActions';
 
 class AlbumDetailed extends React.Component {
     static propTypes = {
         library: React.PropTypes.array,
-        params: React.PropTypes.object
+        params: React.PropTypes.object,
+        trackPlayingId: React.PropTypes.string,
+        status: React.PropTypes.string
     };
 
     constructor(props) {
@@ -13,16 +18,43 @@ class AlbumDetailed extends React.Component {
 
     render() {
         const albums = this.props.library;
-        let album;
-        albums.forEach((a) => {
-            if(a._id === this.id) {
-                album = a;
-            }
+        const album = albums.filter((album) => album._id === this.id)[0];
+        const cover = 'dist/img/album.svg';
+        let noOfSongs = utils.getFormatted('SONG_COUNT', album.tracks);
+        noOfSongs += noOfSongs > 1 ? ' Songs' : ' Song';
+        const duration = utils.getFormatted('TOTAL_DURATION', album.duration);
+        const artists = album.artists.join(', ');
+        const songs = album.songsList;
+        const songsRow = [];
+        songs.forEach((song, index) => {
+            const playing = song._id === this.props.trackPlayingId;
+            songsRow.push(
+                <SongRow
+                    track={ song }
+                    index= { index }
+                    key = { index }
+                    status = { this.props.status }
+                    trackPlayingId = { this.props.trackPlayingId }
+                    playing = { playing }
+                />
+            );
         });
-        console.info(album);
+
         return (
-            <div>
-                Welcome to AlbumDetailed
+            <div className="album-detailed">
+                <div className="lib-message">
+                    <img src={ cover } />
+                    <div className="album-header">
+                        <h1>{ album.title }</h1>
+                        <p className="artists">{ artists }</p>
+                        <p>{ noOfSongs } &#x25cf; { duration }</p>
+                    </div>
+                </div>
+                <table className="table table-inverse table-sm songs-view songs-table">
+                    <tbody>
+                        { songsRow }
+                    </tbody>
+                </table>
             </div>
         );
     }
