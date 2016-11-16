@@ -52,7 +52,9 @@ const utils = {
         const split = accents.split('').join('|');
         const reg = new RegExp(`(${split})`, 'g');
 
-        return str.replace(reg, (a) => fixes[accents.indexOf(a) || '' ]);
+        return str
+            .replace(reg, (a) => fixes[accents.indexOf(a) || '' ])
+            .replace(' ','');
     },
 
     getMetadata: (track, callback) => {

@@ -154,7 +154,7 @@ export default (state = {}, payload) => {
 
             const allAlbums = state.albums.all;
             const albums = [].concat(allAlbums).filter((album) => {
-                return album.title.includes(search);
+                return album.loweredMetas.title.includes(search);
             });
 
             newState.albums.sub = albums;

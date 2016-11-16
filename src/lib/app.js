@@ -90,6 +90,9 @@ const Album = new linvodb('album', {
     cover: {
         default: null
     },
+    loweredMetas: {
+        title: String
+    },
     year: String,
     songsList: [Document],
     tracks: Number,
