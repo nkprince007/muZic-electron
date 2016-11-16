@@ -35,11 +35,11 @@
             }
         }
         .lib-viewbox {
-            width: calc(94% - 250px);
+            width: calc(100% - 250px);
             position: fixed;
             top: 80px;
             bottom: 100px;
-            left: calc(3% + 250px);
+            left: 250px;
             overflow: scroll;
         }
         .lib-message {
