@@ -23,8 +23,7 @@ class Albums extends React.Component {
     masonryCreate() {
         new Masonry('.album-grid', {
             isAnimated: true,
-            itemSelector: '.album-item',
-            stagger: 50
+            itemSelector: '.album-item'
         });
     }
 
