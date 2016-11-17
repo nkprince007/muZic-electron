@@ -5,6 +5,9 @@
   "description": "A minimal music player",
   "main": "main.js",
   "scripts": {
+    "ci:lint": "./node_modules/.bin/eslint . --config .eslintrc",
+    "ci:transpile": "./node_modules/.bin/webpack --config webpack.config.development.js --bail",
+    "clean": "find ./dist -maxdepth 1 -type f -delete",
     "serve": "babel-node server.js",
     "start": "ENV=development electron .",
     "dev": "concurrently -k 'babel-node server.js' 'npm start'",

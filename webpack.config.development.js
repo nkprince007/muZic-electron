@@ -1,8 +1,8 @@
-var webpack = require('webpack');
-var webpackTargetElectronRenderer = require('webpack-target-electron-renderer')
-var path = require('path');
+const webpack = require('webpack');
+const webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
+const path = require('path');
 
-var config = {
+const config = {
     entry: [
         'webpack-hot-middleware/client?reload=true&path=http://localhost:9000/__webpack_hmr',
         './src/index',
