@@ -94,7 +94,7 @@ const Album = new linvodb('album', {
         title: String
     },
     year: String,
-    songsList: [Document],
+    songsList: [Object],
     tracks: Number,
     duration: Number
 });

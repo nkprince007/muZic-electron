@@ -86,6 +86,9 @@ const refreshAlbums = () => {
                     cover: _.union(songsList.map((song) => song.cover)),
                     artists: _.union(_.flatten(songsList.map((song) => song.albumartist))),
                     duration: _.sum(songsList.map((song) => song.duration)),
+                    loweredMetas: {
+                        title: songsList[0].loweredMetas.album
+                    },
                     songsList
                 };
                 app.models.Album.insert(album);
