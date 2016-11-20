@@ -28,6 +28,7 @@ class Library extends React.Component {
             this.library = this.props.filteredAlbums || this.props.albums;
         } else if (this.child === 'AlbumDetailed') {
             this.library = this.props.albums;
+            this.songs = this.props.library;
         }
 
         if (this.props.library === null || this.props.refreshProgress !== 0) {
@@ -54,6 +55,7 @@ class Library extends React.Component {
             library: this.library,
             trackPlayingId: this.props.trackPlayingId,
             status: this.props.status,
+            songs: this.songs,
             filteredTracks: this.props.filteredTracks
         });
     }

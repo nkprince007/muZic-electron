@@ -8,7 +8,8 @@ class AlbumDetailed extends React.Component {
         library: React.PropTypes.array,
         params: React.PropTypes.object,
         trackPlayingId: React.PropTypes.string,
-        status: React.PropTypes.string
+        status: React.PropTypes.string,
+        songs: React.PropTypes.array
     };
 
     constructor(props) {
@@ -24,7 +25,8 @@ class AlbumDetailed extends React.Component {
         noOfSongs += noOfSongs > 1 ? ' Songs' : ' Song';
         const duration = utils.getFormatted('TOTAL_DURATION', album.duration);
         const artists = album.artists.join(', ');
-        const songs = album.songsList;
+        const songsIdList = album.songsList;
+        const songs = this.props.songs.filter((song) => songsIdList.indexOf(song._id) !== -1);
         const songsRow = [];
         songs.forEach((song, index) => {
             const playing = song._id === this.props.trackPlayingId;
