@@ -7,3 +7,4 @@ dist/
 !dist/css
 !dist/fonts
 !dist/img
+.DS_Store
