@@ -39,9 +39,7 @@ const loadAlbums = () => {
     };
     app.models.Album.find().sort(querySort).exec((err, albums) => {
         if (err) console.warn(err);
-        else if (albums.length === 0) {
-            refreshAlbums();
-        } else {
+        else {
             store.dispatch({
                 type: keys.LIBRARY_REFRESH_ALBUMS,
                 albums
@@ -70,30 +68,6 @@ const removeFolder = (index) => {
     store.dispatch({
         type: keys.LIBRARY_REMOVE_FOLDER,
         index
-    });
-};
-
-const refreshAlbums = () => {
-    app.models.Song.find().exec((err, songs) => {
-        if (err) console.warn(err);
-        else {
-            const albums = _.groupBy(songs, 'album');
-            _.forIn(albums, (songsList, key) => {
-                const album = {
-                    title: key,
-                    year: _.last(_.union(songsList.map((song) => song.year))),
-                    tracks: songsList.length,
-                    cover: _.union(songsList.map((song) => song.cover)),
-                    artists: _.union(_.flatten(songsList.map((song) => song.albumartist))),
-                    duration: _.sum(songsList.map((song) => song.duration)),
-                    loweredMetas: {
-                        title: songsList[0].loweredMetas.album
-                    },
-                    songsList: songsList.map((song) => song.path)
-                };
-                app.models.Album.insert(album);
-            });
-        }
     });
 };
 
@@ -146,7 +120,30 @@ const refresh = () => {
             addedFiles++;
         }, { concurrent: fsConcurrency }))
         .then(() => {
-            loadAlbums();
+            return app.models.Album.removeAsync({}, { multi: true }).then(() => {
+                return app.models.Song.findAsync({});
+            }).then((songs) => {
+                const albums = _.groupBy(songs, 'album');
+                _.forIn(albums, (songsList, key) => {
+                    const album = {
+                        title: key,
+                        year: _.last(_.union(songsList.map((song) => song.year))),
+                        tracks: songsList.length,
+                        cover: _.union(songsList.map((song) => song.cover)),
+                        artists: _.union(_.flatten(songsList.map((song) => song.albumartist))),
+                        duration: _.sum(songsList.map((song) => song.duration)),
+                        loweredMetas: {
+                            title: songsList[0].loweredMetas.album
+                        },
+                        songsList: songsList.map((song) => song.path)
+                    };
+                    app.models.Album.insertAsync(album);
+                });
+            }).then(() => {
+                loadAlbums();
+            });
+        })
+        .then(() => {
             AppActions.library.load();
             store.dispatch({
                 type: keys.LIBRARY_REFRESH_END
@@ -206,7 +203,6 @@ export default {
     addFolders,
     removeFolder,
     refresh,
-    refreshAlbums,
     fetchCover,
     selectAndPlay,
     search,

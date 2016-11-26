@@ -100,7 +100,6 @@ const Album = new linvodb('album', {
 });
 
 Song.ensureIndex({ fieldName: 'path', unique: true });
-Album.ensureIndex({ fieldName: 'title', unique: true });
 
 const models = {
     Song,
