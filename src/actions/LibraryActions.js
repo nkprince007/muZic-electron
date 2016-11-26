@@ -89,7 +89,7 @@ const refreshAlbums = () => {
                     loweredMetas: {
                         title: songsList[0].loweredMetas.album
                     },
-                    songsList: songsList.map((song) => song._id)
+                    songsList: songsList.map((song) => song.path)
                 };
                 app.models.Album.insert(album);
             });

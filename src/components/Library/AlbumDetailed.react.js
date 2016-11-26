@@ -26,7 +26,7 @@ class AlbumDetailed extends React.Component {
         const duration = utils.getFormatted('TOTAL_DURATION', album.duration);
         const artists = album.artists.join(', ');
         const songsIdList = album.songsList;
-        const songs = this.props.songs.filter((song) => songsIdList.indexOf(song._id) !== -1);
+        const songs = this.props.songs.filter((song) => songsIdList.indexOf(song.path) !== -1);
         const songsRow = [];
         songs.forEach((song, index) => {
             const playing = song._id === this.props.trackPlayingId;
