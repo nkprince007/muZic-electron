@@ -1,0 +1,118 @@
+.overlay-loader {
+    display: block;
+    margin: auto;
+    width: 85px;
+    height: 85px;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 85px;
+    height: 85px;
+    animation-name: rotateAnim;
+    -webkit-animation-name: rotateAnim;
+    animation-duration: 0.82s;
+    -webkit-animation-duration: 0.82s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+
+    div {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        border: 1px solid rgb(139,195,74);
+        position: absolute;
+        top: 2px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    div:nth-child(odd) {
+        border-top: none;
+        border-left: none;
+    }
+
+    div:nth-child(even) {
+        border-bottom: none;
+        border-right: none;
+    }
+
+    div:nth-child(2) {
+        border-width: 2px;
+        left: 0px;
+        top: -3px;
+        width: 10px;
+        height: 10px;
+    }
+
+    div:nth-child(3) {
+        border-width: 2px;
+        left: -1px;
+        top: 3px;
+        width: 15px;
+        height: 15px;
+    }
+
+    div:nth-child(4) {
+        border-width: 3px;
+        left: -1px;
+        top: -3px;
+        width: 20px;
+        height: 20px;
+    }
+
+    div:nth-child(5) {
+        border-width: 3px;
+        left: -1px;
+        top: 3px;
+        width: 27px;
+        height: 27px;
+    }
+
+    div:nth-child(6) {
+        border-width: 3px;
+        left: 0px;
+        top: -3px;
+        width: 34px;
+        height: 34px;
+    }
+
+    div:nth-child(7) {
+        border-width: 3px;
+        left: 0px;
+        top: 5px;
+        width: 42px;
+        height: 42px;
+    }
+}
+
+@keyframes rotateAnim {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@-webkit-keyframes rotateAnim {
+    from {
+        -webkit-transform: rotate(360deg);
+    }
+    to {
+        -webkit-transform: rotate(0deg);
+    }
+}

@@ -34,7 +34,17 @@ class Library extends React.Component {
         if (this.props.library === null || this.props.refreshProgress !== 0) {
             return (
                 <div className='library-empty'>
-                  <p>Loading library...</p>
+                <div className="overlay-loader">
+                    <div className="loader">
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                      </div>
+                </div>
                 </div>
             );
         }
