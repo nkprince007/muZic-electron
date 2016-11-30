@@ -1,6 +1,6 @@
 {
-  "name": "muzic",
   "version": "0.1.0",
+  "name": "muzic",
   "electron_version": "1.4.5",
   "description": "A minimal music player",
   "main": "main.js",
@@ -81,5 +81,8 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.7.4",
     "teeny-conf": "^1.0.1"
+  },
+  "optionalDependencies": {
+    "fsevents": "^0.1.6"
   }
 }

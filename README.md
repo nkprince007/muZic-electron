@@ -18,7 +18,7 @@ Developer Notes
 ---------------
 To test:
 - clone the repo;
-- run `npm install`;
+- run `npm install --no-optional`;
 - run `npm run dev`;
 
 Highly Production & Development ready;
