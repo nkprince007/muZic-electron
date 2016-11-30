@@ -21,6 +21,10 @@ To test:
 - run `npm install --no-optional`;
 - run `npm run dev`;
 
+>This project is still under development and proxies node server via localhost to send content,
+> so be sure enough to add **localhost** to excluded proxies in your *Network Configuration*
+> if you work under a corporate proxy. 
+
 Highly Production & Development ready;
 It works with **webpack** middleware to run a Hot Module Reload with an **express** server on localhost. It is entirely **development** ready.
 
