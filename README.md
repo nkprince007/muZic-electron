@@ -1,6 +1,6 @@
 **muZic** (v0.1.0-alpha)
 ========================
-**＜/＞ by [@nkprince007][6] with ❤**
+**</> by [@nkprince007][6] with ❤**
 
 A light weight **music** player built around web technologies.
 

@@ -18,7 +18,7 @@ const config = {
         },
         {
             test: /\.json$/,
-            use: 'json'
+            use: 'json-loader'
         },
         {
             test: /\.css|\.png|\.svg|\.eot|\.ttf|\.woff|\.woff2$/,
