@@ -8,7 +8,7 @@ export default (state = {}, payload) => {
                 tracks: {
                     library: {
                         all: [...payload.songs],
-                        sub: [...payload.songs],
+                        sub: [...payload.songs]
                     },
                     playlist: {
                         all: [],

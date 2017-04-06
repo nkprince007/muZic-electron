@@ -1,7 +1,7 @@
-import app from '../lib/app';
-
 import LibraryActions from './LibraryActions';
 import PlayerActions from './PlayerActions';
+
+import app from '../lib/app';
 
 const ipcRenderer = electron.ipcRenderer;
 
@@ -47,17 +47,16 @@ const fullScreen = () => {
 };
 
 export default {
-    library: LibraryActions,
-    player: PlayerActions,
-
-    init,
-    close,
-    restart,
-    start,
-    minimize,
-    maximize,
-    fullScreen,
     app: {
         restart
-    }
+    },
+    close,
+    fullScreen,
+    init,
+    library: LibraryActions,
+    maximize,
+    minimize,
+    player: PlayerActions,
+    restart,
+    start
 };

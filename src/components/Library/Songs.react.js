@@ -1,24 +1,24 @@
-import React from 'react';
-import _ from 'lodash';
-
-import utils from '../../utilities/utils';
-
-import SongRow from './SongRow.react';
 import AppActions from '../../actions/AppActions';
+
+import React from 'react';
+import SongRow from './SongRow.react';
+
+import _ from 'lodash';
+import utils from '../../utilities/utils';
 
 class Songs extends React.Component {
     static propTypes = {
+        filteredTracks: React.PropTypes.array,
         library: React.PropTypes.array,
-        trackPlayingId: React.PropTypes.string,
         status: React.PropTypes.string,
-        filteredTracks: React.PropTypes.array
+        trackPlayingId: React.PropTypes.string
     }
 
     constructor(props) {
         super(props);
         this.state = {
-            selected: [],
-            scrollTop: 0
+            scrollTop: 0,
+            selected: []
         };
 
         this.scrollList = this.scrollList.bind(this);

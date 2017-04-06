@@ -25,14 +25,14 @@ class ConfigManager {
 
     getDefaultConfig() {
         return {
-            musicFolders: [],
-            useNativeFrame: false,
-            minimizeToTray: true,
-            devMode: true,
             bounds: {
-                width: 1280,
-                height: 720
-            }
+                height: 720,
+                width: 1280
+            },
+            devMode: true,
+            minimizeToTray: true,
+            musicFolders: [],
+            useNativeFrame: false
         };
     }
 

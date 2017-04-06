@@ -1,6 +1,6 @@
+import { Link } from 'react-router';
 import React from 'react';
 import path from 'path';
-import { Link } from 'react-router';
 
 class AlbumRow extends React.Component {
     static propTypes = {

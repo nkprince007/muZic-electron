@@ -1,4 +1,22 @@
 export default {
+    albums: { // Albums
+        all: null, // All albums
+        sub: null // Filtered albums (e.g. search)
+    },
+    cover: null,  // Current trackplaying cover
+    notifications: [],    // The array of notifications
+    oldQueue: null,  // Queue backup (in case of shuffle)
+
+    playerStatus: 'stop', // Player status
+    playlists: null,
+
+    queue: [],    // Tracks to be played
+    queueCursor: null,  // The cursor of the queue
+    refreshProgress: 0,     // Progress of the refreshing library
+    refreshingLibrary: false, // If the app is currently refreshing the tracks
+    repeat: false, // the current repeat state (one, all, false)
+    shuffle: false, // If shuffle mode is enabled
+
     tracks: {
         library: { // Tracks of the library view
             all: null, // All tracks
@@ -9,26 +27,5 @@ export default {
             sub: null
         }
     },
-
-    albums: { // Albums
-        all: null, // All albums
-        sub: null // Filtered albums (e.g. search)
-    },
-
-    tracksCursor: 'library',  // 'library' or 'playlist'
-
-    queue: [],    // Tracks to be played
-    queueCursor: null,  // The cursor of the queue
-
-    oldQueue: null,  // Queue backup (in case of shuffle)
-
-    playlists: null,
-
-    playerStatus: 'stop', // Player status
-    cover: null,  // Current trackplaying cover
-    notifications: [],    // The array of notifications
-    refreshingLibrary: false, // If the app is currently refreshing the tracks
-    repeat: false, // the current repeat state (one, all, false)
-    shuffle: false, // If shuffle mode is enabled
-    refreshProgress: 0,     // Progress of the refreshing library
+    tracksCursor: 'library'  // 'library' or 'playlist'
 };

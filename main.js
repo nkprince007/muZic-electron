@@ -15,13 +15,13 @@ let mainWindow;
 
 function createWindow() {
     mainWindow = new BrowserWindow({
-        title: 'muZic',
-        width: 1280,
-        height: 720,
-        minWidth: 1280,
-        minHeight: 720,
         frame: false,
-        show: false
+        height: 720,
+        minHeight: 720,
+        minWidth: 1280,
+        show: false,
+        title: 'muZic',
+        width: 1280
     });
 
     if (process.env.ENV === 'development') {

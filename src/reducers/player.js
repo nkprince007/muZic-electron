@@ -1,6 +1,6 @@
-import keys from '../keys/keyfile';
-
 import Player from '../lib/player';
+
+import keys from '../keys/keyfile';
 
 export default (state = {}, payload) => {
     switch (payload.type) {
@@ -36,9 +36,9 @@ export default (state = {}, payload) => {
             Player.pause();
             const newState = {
                 ...state,
+                playerStatus: 'stop',
                 queue: [],
-                queueCursor: null,
-                playerStatus: 'stop'
+                queueCursor: null
             };
 
             newState.tracks = {

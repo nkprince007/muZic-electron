@@ -1,6 +1,6 @@
-import React from 'react';
-
 import AppActions from '../../actions/AppActions';
+
+import React from 'react';
 
 export default class WindowControls extends React.Component {
 

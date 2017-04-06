@@ -1,17 +1,17 @@
-import React from 'react';
-
 //Components
 import PlayerControls from './PlayerControls.react';
+
+import React from 'react';
 
 export default class App extends React.Component {
     static propTypes = {
         app: React.PropTypes.object,
-        playerStatus: React.PropTypes.string,
-        repeat: React.PropTypes.bool,
-        shuffle: React.PropTypes.bool,
-        queue: React.PropTypes.array,
         cover: React.PropTypes.string,
-        queueCursor: React.PropTypes.number
+        playerStatus: React.PropTypes.string,
+        queue: React.PropTypes.array,
+        queueCursor: React.PropTypes.number,
+        repeat: React.PropTypes.bool,
+        shuffle: React.PropTypes.bool
     }
 
     render() {

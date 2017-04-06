@@ -1,18 +1,19 @@
-import React from 'react';
-import { ProgressBar } from 'react-bootstrap';
-
 import AppActions from '../../actions/AppActions';
 import Player from '../../lib/player';
+
+import { ProgressBar } from 'react-bootstrap';
+
+import React from 'react';
 
 export default class PlayerControls extends React.Component {
     static propTypes = {
         app: React.PropTypes.object,
-        playerStatus: React.PropTypes.string,
-        repeat: React.PropTypes.bool,
-        shuffle: React.PropTypes.bool,
-        queue: React.PropTypes.array,
         cover: React.PropTypes.string,
-        queueCursor: React.PropTypes.number
+        playerStatus: React.PropTypes.string,
+        queue: React.PropTypes.array,
+        queueCursor: React.PropTypes.number,
+        repeat: React.PropTypes.bool,
+        shuffle: React.PropTypes.bool
     }
 
     constructor(props) {

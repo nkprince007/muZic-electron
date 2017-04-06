@@ -1,18 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router';
-
 import AppActions from '../../actions/AppActions';
+
+import { Link } from 'react-router';
+import React from 'react';
 
 class Library extends React.Component {
     static propTypes = {
-        library: React.PropTypes.array,
-        children: React.PropTypes.object,
-        trackPlayingId: React.PropTypes.string,
-        status: React.PropTypes.string,
         albums: React.PropTypes.array,
-        filteredTracks: React.PropTypes.array,
+        children: React.PropTypes.object,
         filteredAlbums: React.PropTypes.array,
-        refreshProgress: React.PropTypes.number
+        filteredTracks: React.PropTypes.array,
+        library: React.PropTypes.array,
+        refreshProgress: React.PropTypes.number,
+        status: React.PropTypes.string,
+        trackPlayingId: React.PropTypes.string
     };
 
     constructor(props) {
@@ -62,11 +62,11 @@ class Library extends React.Component {
         }
 
         return React.cloneElement(this.props.children, {
+            filteredTracks: this.props.filteredTracks,
             library: this.library,
-            trackPlayingId: this.props.trackPlayingId,
-            status: this.props.status,
             songs: this.songs,
-            filteredTracks: this.props.filteredTracks
+            status: this.props.status,
+            trackPlayingId: this.props.trackPlayingId
         });
     }
 

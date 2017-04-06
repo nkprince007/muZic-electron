@@ -1,15 +1,15 @@
 import React from 'react';
-import utils from '../../utilities/utils';
 import SongRow from './SongRow.react';
+import utils from '../../utilities/utils';
 // import AppActions from '../../actions/AppActions';
 
 class AlbumDetailed extends React.Component {
     static propTypes = {
         library: React.PropTypes.array,
         params: React.PropTypes.object,
-        trackPlayingId: React.PropTypes.string,
+        songs: React.PropTypes.array,
         status: React.PropTypes.string,
-        songs: React.PropTypes.array
+        trackPlayingId: React.PropTypes.string
     };
 
     constructor(props) {

@@ -65,7 +65,7 @@ class Player {
 }
 
 export default new Player({
-    volume: app.config.get('audioVolume'),
+    muted: app.config.get('audioMuted'),
     playbackRate: app.config.get('audioPlaybackRate'),
-    muted: app.config.get('audioMuted')
+    volume: app.config.get('audioVolume')
 });

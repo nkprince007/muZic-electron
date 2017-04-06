@@ -1,17 +1,18 @@
-import React from 'react';
-import { Route, IndexRedirect } from 'react-router';
+import { IndexRedirect, Route } from 'react-router';
 
-//Actions
+import AlbumDetailed from '../components/Library/AlbumDetailed.react';
+import Albums from '../components/Library/Albums.react';
+
+import App from '../components/App.react';
 import AppActions from '../actions/AppActions';
 
-//Components
-import App from '../components/App.react';
 import Library from '../components/Library/Library.react';
-import Songs from '../components/Library/Songs.react';
-import Albums from '../components/Library/Albums.react';
-import AlbumDetailed from '../components/Library/AlbumDetailed.react';
+
+import React from 'react';
+
 import Settings from '../components/Settings/Settings.react';
 import SettingsLibrary from '../components/Settings/SettingsLibrary.react';
+import Songs from '../components/Library/Songs.react';
 
 //Initializer
 const init = {

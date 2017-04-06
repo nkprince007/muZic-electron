@@ -1,7 +1,8 @@
+import Player from '../lib/player';
+
 import app from '../lib/app';
 import keys from '../keys/keyfile';
 import utils from '../utilities/utils';
-import Player from '../lib/player';
 
 export default (state = {}, payload) => {
     switch (payload.type) {
@@ -58,11 +59,11 @@ export default (state = {}, payload) => {
 
                 return {
                     ...state,
-                    queue,
-                    queueCursor,
                     oldQueue: queue,
                     oldQueueCursor: queueCursor,
-                    playerStatus: 'play'
+                    playerStatus: 'play',
+                    queue,
+                    queueCursor
                 };
             }
             return state;
@@ -111,8 +112,8 @@ export default (state = {}, payload) => {
         case (keys.LIBRARY_REFRESH_END): {
             return {
                 ...state,
-                refreshingLibrary: false,
-                refreshProgress: 0
+                refreshProgress: 0,
+                refreshingLibrary: false
             };
         }
         case (keys.LIBRARY_REFRESH_PROGRESS): {

@@ -1,19 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
-
-//Libraries
-import app from '../lib/app';
-
-//Components
-import Header from './Header/Header.react';
 import Footer from './Footer/Footer.react';
+import Header from './Header/Header.react';
+import { Link } from 'react-router';
+import React from 'react';
 
+import app from '../lib/app';
+import { connect } from 'react-redux';
 
 class App extends React.Component {
     static propTypes = {
-        store: React.PropTypes.object,
-        children: React.PropTypes.object
+        children: React.PropTypes.object,
+        store: React.PropTypes.object
     };
 
     render() {
@@ -46,18 +42,18 @@ class App extends React.Component {
                     <div className='main-content'>
                         { React.cloneElement(
                             this.props.children, {
+                                albums: store.albums.all,
                                 app: this,
                                 config: { ...app.config.getAll() },
-                                refreshingLibrary: store.refreshingLibrary,
-                                refreshProgress: store.refreshProgress,
-                                queue: store.queue,
-                                playlists: store.playlists,
+                                filteredAlbums: store.albums.sub,
                                 filteredTracks: store.tracks[store.tracksCursor].sub,
                                 library: store.tracks[store.tracksCursor].all,
-                                albums: store.albums.all,
-                                filteredAlbums: store.albums.sub,
-                                trackPlayingId,
-                                status: store.playerStatus
+                                playlists: store.playlists,
+                                queue: store.queue,
+                                refreshProgress: store.refreshProgress,
+                                refreshingLibrary: store.refreshingLibrary,
+                                status: store.playerStatus,
+                                trackPlayingId
                             })
                         }
                     </div>

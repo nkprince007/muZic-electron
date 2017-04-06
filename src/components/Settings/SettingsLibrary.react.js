@@ -1,8 +1,9 @@
-import React from 'react';
-import classnames from 'classnames';
-import { ProgressBar, ButtonGroup, Button } from 'react-bootstrap';
+import { Button, ButtonGroup, ProgressBar } from 'react-bootstrap';
 
 import AppActions from '../../actions/AppActions';
+import React from 'react';
+
+import classnames from 'classnames';
 
 class SettingsLibrary extends React.Component {
     static propTypes = {

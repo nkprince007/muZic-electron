@@ -1,8 +1,8 @@
-import linvodb from 'linvodb3';
-import leveljs from 'level-js';
 import Promise from 'bluebird';
-import teeny from 'teeny-conf';
+import leveljs from 'level-js';
+import linvodb from 'linvodb3';
 import path from 'path';
+import teeny from 'teeny-conf';
 
 const remote = electron.remote;
 const app = remote.app;
@@ -51,7 +51,9 @@ const supportedExtensions = [
 |----------------------------------------------------------------------
 */
 
-linvodb.defaults.store = { db: leveljs };
+linvodb.defaults.store = {
+    db: leveljs
+};
 linvodb.path = pathUserData;
 
 const Song = new linvodb('song', {
@@ -67,6 +69,13 @@ const Song = new linvodb('song', {
     },
     duration: Number,
     genre: [String],
+    loweredMetas: {
+        album: String,
+        albumartist: [String],
+        artist: [String],
+        genre: [String],
+        title: String
+    },
     path: String,
     playCount: Number,
     title: String,
@@ -74,36 +83,32 @@ const Song = new linvodb('song', {
         no: Number,
         of: Number
     },
-    year: String,
-    loweredMetas: {
-        artist: [String],
-        album: String,
-        genre: [String],
-        title: String,
-        albumartist: [String]
-    }
+    year: String
 });
 
 const Album = new linvodb('album', {
-    title: String,
     artists: [String],
     cover: {
         default: null
     },
+    duration: Number,
     loweredMetas: {
         title: String
     },
-    year: String,
     songsList: [String],
+    title: String,
     tracks: Number,
-    duration: Number
+    year: String
 });
 
-Song.ensureIndex({ fieldName: 'path', unique: true });
+Song.ensureIndex({
+    fieldName: 'path',
+    unique: true
+});
 
 const models = {
-    Song,
-    Album
+    Album,
+    Song
 };
 
 Promise.promisifyAll(models.Song);
@@ -116,11 +121,11 @@ Promise.promisifyAll(models.Album);
 */
 
 export default {
-    supportedExtensions,
-    pathSrc,
     browserWindows,
-    models,
-    version: app.getVersion(),
     config: conf,
     initialConfig: conf.getAll(),
+    models,
+    pathSrc,
+    supportedExtensions,
+    version: app.getVersion()
 };

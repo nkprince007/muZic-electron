@@ -1,16 +1,15 @@
-import React from 'react';
-import utils from '../../utilities/utils';
-import Masonry from 'masonry-layout';
-
 import AlbumRow from './AlbumRow.react';
 import AppActions from '../../actions/AppActions';
+import Masonry from 'masonry-layout';
 
+import React from 'react';
+import utils from '../../utilities/utils';
 
 class Albums extends React.Component {
     static propTypes = {
         library: React.PropTypes.array,
-        trackPlayingId: React.PropTypes.string,
         status: React.PropTypes.string,
+        trackPlayingId: React.PropTypes.string
     }
 
     constructor(props) {

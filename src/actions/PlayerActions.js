@@ -1,5 +1,5 @@
-import store from '../store';
 import keys from '../keys/keyfile';
+import store from '../store';
 
 // import app from '../lib/app';
 // import Player from '../lib/player.js';
@@ -35,25 +35,20 @@ const stop = () => {
 };
 
 const next = (e) => {
-    store.dispatch({
-        type: keys.PLAYER_NEXT,
-        e
-    });
+    store.dispatch({ e, type: keys.PLAYER_NEXT });
 };
 
 const previous = () => {
-    store.dispatch({
-        type: keys.PLAYER_PREVIOUS
-    });
+    store.dispatch({ type: keys.PLAYER_PREVIOUS });
 };
 
 // volume, shuffle, repeat, playbackRate,
 
 export default {
     next,
-    previous,
-    play,
     pause,
-    stop,
-    playToggle
+    play,
+    playToggle,
+    previous,
+    stop
 };

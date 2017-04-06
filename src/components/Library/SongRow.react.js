@@ -1,17 +1,17 @@
+import AppActions from '../../actions/AppActions';
+
 import React from 'react';
 import classnames from 'classnames';
-
-import AppActions from '../../actions/AppActions';
 
 class SongRow extends React.Component {
     static propTypes = {
         children: React.PropTypes.object,
-        selected: React.PropTypes.bool,
-        trackPlayingId: React.PropTypes.string,
         index: React.PropTypes.number,
         playing: React.PropTypes.bool,
+        selected: React.PropTypes.bool,
+        status: React.PropTypes.string,
         track: React.PropTypes.object,
-        status: React.PropTypes.string
+        trackPlayingId: React.PropTypes.string
     }
 
     constructor(props) {

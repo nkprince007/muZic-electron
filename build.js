@@ -16,20 +16,18 @@ function getDir(srcPath) {
 }
 
 const options = {
-    'dir': './',
-    'name': 'muZic',
-    'platform': ['darwin', 'linux', 'win32'],
-    'arch': ['ia32', 'x64'],
-    'version': app.electron_version,
-    'icon': '',
-    'build-version': app.version,
     'app-version': app.version,
-
-    //optional
-    'prune': true,
+    'arch': ['ia32', 'x64'],
+    'build-version': app.version,
+    'dir': './',
+    'icon': '',
     'ignore': /(build|node_modules\/+?(?!teeny).+)/,
+    'name': 'muZic',
     'out': path.join('build', 'dist', app.version),
-    'overwrite': true
+    'overwrite': true,
+    'platform': ['darwin', 'linux', 'win32'],
+    'prune': true,
+    'version': app.electron_version
 };
 
 console.info(`Starting muZic ${app.version} build`);
