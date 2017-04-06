@@ -7,11 +7,8 @@ import { Provider } from 'react-redux';
 import routes from './router/routes';
 import store from './store';
 
-// Bootstrap and jQuery
-require('../dist/js/main');
-
-// Stylesheets
-require('./styles/_main.scss');
+// Styles and Scripts
+import '../dist/js/main';
 
 ReactDOM.render(
     <Provider store={ store }>

@@ -38,14 +38,17 @@
   </svg>
   <div id="react-content"></div>
   <script>
-      const electron = require('electron');
-      window.jQuery = window.$ = require('jquery');
-      bs = require('./dist/js/bootstrap.min.js');
-      (function() {
-        const script = document.createElement('script');
-        script.src = process.env.ENV === 'development' ? 'http://localhost:9000/dist/bundle.js' : './dist/bundle.js';
-        document.write(script.outerHTML);
-      }());
-    </script>
+    const script = document.createElement('script');
+    const port = process.env.PORT || 8080;
+
+    if(process.env.ENV === 'development') {
+      script.src = 'http://localhost:' + port + '/dist/bundle.js'
+    } else {
+      script.src = './dist/bundle.js';
+    }
+
+    document.body.appendChild(script);
+    const electron = require('electron');
+  </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 **muZic** (v0.1.0-alpha)
 ========================
-**＜＞ by [@nkprince007][6] with ❤**
+**＜/＞ by [@nkprince007][6] with ❤**
 
 A light weight **music** player built around web technologies.
 
@@ -18,17 +18,17 @@ Developer Notes
 ---------------
 To test:
 - clone the repo;
-- run `npm install --no-optional`;
-- run `npm run dev`;
+- run `$ npm install --no-optional`;
+- run `$ npm run dev`;
 
 >This project is still under development and proxies node server via localhost to send content,
-> so be sure enough to add **localhost** to excluded proxies in your *Network Configuration*
-> if you work under a corporate proxy. 
+> so be sure enough to add **localhost** to excluded proxies in your *Network Configuration*,
+> if you work under a corporate proxy.
 
 Highly Production & Development ready;
-It works with **webpack** middleware to run a Hot Module Reload with an **express** server on localhost. It is entirely **development** ready.
+It works with **webpack-dev-server** to provide Hot Module Reloading.
 
-Any one who'd like to collaborate, feel free to mail me at <mailto:nkprince007@gmail.com>
+Any one who'd like to collaborate, feel free to mail me at [nkprince007@gmail.com](mailto:nkprince007@gmail.com)
 
 
 [1]: http://nodejs.org/en

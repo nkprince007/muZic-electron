@@ -24,11 +24,17 @@ function createWindow() {
         show: false
     });
 
-    mainWindow.loadURL(url.format({
-        pathname: path.join(appRoot, 'index.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
+    if (process.env.ENV === 'development') {
+        mainWindow.loadURL(url.format({
+            pathname: 'http://localhost:8080/index.html'
+        }));
+    } else {
+        mainWindow.loadURL(url.format({
+            pathname: path.join(appRoot, 'index.html'),
+            protocol: 'file:',
+            slashes: true
+        }));
+    }
 
     mainWindow.once('ready-to-show', () => {
         mainWindow.show();
