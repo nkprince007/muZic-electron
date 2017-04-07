@@ -4,6 +4,10 @@
 
 A light weight **music** player built around web technologies.
 
+Screenshots
+-----------
+![On GDE](https://raw.githubusercontent.com/NIT-dgp/muZic-electron/master/screenies/Linux-01.png)
+
 
 What does it use?
 -----------------
